@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		3770EEFC2AE3E6100079E36E /* FlowStacks in Frameworks */ = {isa = PBXBuildFile; productRef = 3770EEFB2AE3E6100079E36E /* FlowStacks */; };
+		3770EEFF2AE3E7640079E36E /* AppCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3770EEFE2AE3E7640079E36E /* AppCoordinator.swift */; };
 		37ED6DE92AE3E42B00D162EE /* SwiftUI_App_BoilerplateApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37ED6DE82AE3E42B00D162EE /* SwiftUI_App_BoilerplateApp.swift */; };
 		37ED6DEB2AE3E42B00D162EE /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37ED6DEA2AE3E42B00D162EE /* ContentView.swift */; };
 		37ED6DED2AE3E42C00D162EE /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 37ED6DEC2AE3E42C00D162EE /* Assets.xcassets */; };
@@ -35,6 +36,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		3770EEFE2AE3E7640079E36E /* AppCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppCoordinator.swift; sourceTree = "<group>"; };
 		37ED6DE52AE3E42B00D162EE /* SwiftUI-App-Boilerplate.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "SwiftUI-App-Boilerplate.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		37ED6DE82AE3E42B00D162EE /* SwiftUI_App_BoilerplateApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftUI_App_BoilerplateApp.swift; sourceTree = "<group>"; };
 		37ED6DEA2AE3E42B00D162EE /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -73,6 +75,30 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		3770EEFD2AE3E7530079E36E /* Coordinators */ = {
+			isa = PBXGroup;
+			children = (
+				3770EEFE2AE3E7640079E36E /* AppCoordinator.swift */,
+			);
+			path = Coordinators;
+			sourceTree = "<group>";
+		};
+		3770EF002AE3E7DB0079E36E /* Screens */ = {
+			isa = PBXGroup;
+			children = (
+				3770EF012AE3E7E20079E36E /* Example */,
+			);
+			path = Screens;
+			sourceTree = "<group>";
+		};
+		3770EF012AE3E7E20079E36E /* Example */ = {
+			isa = PBXGroup;
+			children = (
+				37ED6DEA2AE3E42B00D162EE /* ContentView.swift */,
+			);
+			path = Example;
+			sourceTree = "<group>";
+		};
 		37ED6DDC2AE3E42B00D162EE = {
 			isa = PBXGroup;
 			children = (
@@ -96,8 +122,9 @@
 		37ED6DE72AE3E42B00D162EE /* SwiftUI-App-Boilerplate */ = {
 			isa = PBXGroup;
 			children = (
+				3770EEFD2AE3E7530079E36E /* Coordinators */,
+				3770EF002AE3E7DB0079E36E /* Screens */,
 				37ED6DE82AE3E42B00D162EE /* SwiftUI_App_BoilerplateApp.swift */,
-				37ED6DEA2AE3E42B00D162EE /* ContentView.swift */,
 				37ED6DEC2AE3E42C00D162EE /* Assets.xcassets */,
 				37ED6DEE2AE3E42C00D162EE /* Preview Content */,
 			);
@@ -265,6 +292,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3770EEFF2AE3E7640079E36E /* AppCoordinator.swift in Sources */,
 				37ED6DEB2AE3E42B00D162EE /* ContentView.swift in Sources */,
 				37ED6DE92AE3E42B00D162EE /* SwiftUI_App_BoilerplateApp.swift in Sources */,
 			);
