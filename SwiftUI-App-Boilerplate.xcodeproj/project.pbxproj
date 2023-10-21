@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		3770EEFC2AE3E6100079E36E /* FlowStacks in Frameworks */ = {isa = PBXBuildFile; productRef = 3770EEFB2AE3E6100079E36E /* FlowStacks */; };
 		3770EEFF2AE3E7640079E36E /* AppCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3770EEFE2AE3E7640079E36E /* AppCoordinator.swift */; };
+		3770EF062AE3E98F0079E36E /* Localized.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3770EF042AE3E98F0079E36E /* Localized.swift */; };
+		3770EF072AE3E98F0079E36E /* Closure.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3770EF052AE3E98F0079E36E /* Closure.swift */; };
 		37ED6DE92AE3E42B00D162EE /* SwiftUI_App_BoilerplateApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37ED6DE82AE3E42B00D162EE /* SwiftUI_App_BoilerplateApp.swift */; };
 		37ED6DEB2AE3E42B00D162EE /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37ED6DEA2AE3E42B00D162EE /* ContentView.swift */; };
 		37ED6DED2AE3E42C00D162EE /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 37ED6DEC2AE3E42C00D162EE /* Assets.xcassets */; };
@@ -37,6 +39,8 @@
 
 /* Begin PBXFileReference section */
 		3770EEFE2AE3E7640079E36E /* AppCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppCoordinator.swift; sourceTree = "<group>"; };
+		3770EF042AE3E98F0079E36E /* Localized.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Localized.swift; sourceTree = "<group>"; };
+		3770EF052AE3E98F0079E36E /* Closure.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Closure.swift; sourceTree = "<group>"; };
 		37ED6DE52AE3E42B00D162EE /* SwiftUI-App-Boilerplate.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "SwiftUI-App-Boilerplate.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		37ED6DE82AE3E42B00D162EE /* SwiftUI_App_BoilerplateApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftUI_App_BoilerplateApp.swift; sourceTree = "<group>"; };
 		37ED6DEA2AE3E42B00D162EE /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -99,9 +103,27 @@
 			path = Example;
 			sourceTree = "<group>";
 		};
+		3770EF022AE3E96F0079E36E /* Core */ = {
+			isa = PBXGroup;
+			children = (
+				3770EF032AE3E9840079E36E /* Other */,
+			);
+			path = Core;
+			sourceTree = "<group>";
+		};
+		3770EF032AE3E9840079E36E /* Other */ = {
+			isa = PBXGroup;
+			children = (
+				3770EF052AE3E98F0079E36E /* Closure.swift */,
+				3770EF042AE3E98F0079E36E /* Localized.swift */,
+			);
+			path = Other;
+			sourceTree = "<group>";
+		};
 		37ED6DDC2AE3E42B00D162EE = {
 			isa = PBXGroup;
 			children = (
+				3770EF022AE3E96F0079E36E /* Core */,
 				37ED6DE72AE3E42B00D162EE /* SwiftUI-App-Boilerplate */,
 				37ED6DF82AE3E42C00D162EE /* SwiftUI-App-BoilerplateTests */,
 				37ED6E022AE3E42C00D162EE /* SwiftUI-App-BoilerplateUITests */,
@@ -293,6 +315,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				3770EEFF2AE3E7640079E36E /* AppCoordinator.swift in Sources */,
+				3770EF062AE3E98F0079E36E /* Localized.swift in Sources */,
+				3770EF072AE3E98F0079E36E /* Closure.swift in Sources */,
 				37ED6DEB2AE3E42B00D162EE /* ContentView.swift in Sources */,
 				37ED6DE92AE3E42B00D162EE /* SwiftUI_App_BoilerplateApp.swift in Sources */,
 			);
