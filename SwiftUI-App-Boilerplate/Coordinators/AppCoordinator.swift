@@ -21,7 +21,7 @@ struct AppCoordinator: View {
         Router($routes) { screen, _ in
             switch screen {
             case .home:
-                ContentView()
+                EditorView()
             }
         }
     }
