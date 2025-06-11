@@ -105,8 +105,7 @@ struct MovableCircleView: View {
         let scaledRadius = circle.radius * imageScale
         
         Circle()
-            .stroke(Color.red, lineWidth: 3)
-            .fill(Color.red.opacity(0.7))
+            .fill(.ultraThinMaterial)
             .frame(width: scaledRadius * 2, height: scaledRadius * 2)
             .position(x: screenPosition.x + dragOffset.width, y: screenPosition.y + dragOffset.height)
             .gesture(
