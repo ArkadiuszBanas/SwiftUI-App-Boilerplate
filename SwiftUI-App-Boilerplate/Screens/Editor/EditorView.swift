@@ -480,6 +480,29 @@ struct EditorView: View {
                 await viewModel.loadImage()
             }
         }
+        .sheet(isPresented: $viewModel.showShareSheet) {
+            if let exportedImage = viewModel.exportedImage {
+                ShareSheet(activityItems: [exportedImage])
+            }
+        }
+    }
+}
+
+// MARK: - Share Sheet
+struct ShareSheet: UIViewControllerRepresentable {
+    let activityItems: [Any]
+    
+    func makeUIViewController(context: Context) -> UIActivityViewController {
+        let activityViewController = UIActivityViewController(
+            activityItems: activityItems,
+            applicationActivities: nil
+        )
+        
+        return activityViewController
+    }
+    
+    func updateUIViewController(_ uiViewController: UIActivityViewController, context: Context) {
+        // No updates needed
     }
 }
 
