@@ -60,6 +60,7 @@ struct BottomToolbar: View {
         .foregroundColor(.gray)
         .background(
             Rectangle()
+                .fill(.black)
                 .fill(.ultraThickMaterial)
                 .cornerRadius(50)
         )
@@ -69,10 +70,14 @@ struct BottomToolbar: View {
 }
 
 #Preview {
-    BottomToolbar(
-        selectedPhoto: .constant(nil),
-        selectedImage: nil,
-        onAddShape: {},
-        onExport: {}
-    )
-} 
+    ZStack {
+        Color(.systemGroupedBackground)
+
+        BottomToolbar(
+            selectedPhoto: .constant(nil),
+            selectedImage: nil,
+            onAddShape: {},
+            onExport: {}
+        )
+    }
+}
