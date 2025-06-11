@@ -7,10 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3766B4822DF969C400AC6FA9 /* SharedFoundation in Frameworks */ = {isa = PBXBuildFile; productRef = 3766B4812DF969C400AC6FA9 /* SharedFoundation */; };
+		3766B4852DF96AA700AC6FA9 /* SharedSwiftUI in Frameworks */ = {isa = PBXBuildFile; productRef = 3766B4842DF96AA700AC6FA9 /* SharedSwiftUI */; };
 		3770EEFC2AE3E6100079E36E /* FlowStacks in Frameworks */ = {isa = PBXBuildFile; productRef = 3770EEFB2AE3E6100079E36E /* FlowStacks */; };
 		3770EEFF2AE3E7640079E36E /* AppCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3770EEFE2AE3E7640079E36E /* AppCoordinator.swift */; };
-		3770EF062AE3E98F0079E36E /* Localized.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3770EF042AE3E98F0079E36E /* Localized.swift */; };
-		3770EF072AE3E98F0079E36E /* Closure.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3770EF052AE3E98F0079E36E /* Closure.swift */; };
 		37ED6DE92AE3E42B00D162EE /* SwiftUI_App_BoilerplateApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37ED6DE82AE3E42B00D162EE /* SwiftUI_App_BoilerplateApp.swift */; };
 		37ED6DEB2AE3E42B00D162EE /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37ED6DEA2AE3E42B00D162EE /* ContentView.swift */; };
 		37ED6DED2AE3E42C00D162EE /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 37ED6DEC2AE3E42C00D162EE /* Assets.xcassets */; };
@@ -39,8 +39,6 @@
 
 /* Begin PBXFileReference section */
 		3770EEFE2AE3E7640079E36E /* AppCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppCoordinator.swift; sourceTree = "<group>"; };
-		3770EF042AE3E98F0079E36E /* Localized.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Localized.swift; sourceTree = "<group>"; };
-		3770EF052AE3E98F0079E36E /* Closure.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Closure.swift; sourceTree = "<group>"; };
 		37ED6DE52AE3E42B00D162EE /* SwiftUI-App-Boilerplate.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "SwiftUI-App-Boilerplate.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		37ED6DE82AE3E42B00D162EE /* SwiftUI_App_BoilerplateApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftUI_App_BoilerplateApp.swift; sourceTree = "<group>"; };
 		37ED6DEA2AE3E42B00D162EE /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -58,6 +56,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3766B4822DF969C400AC6FA9 /* SharedFoundation in Frameworks */,
+				3766B4852DF96AA700AC6FA9 /* SharedSwiftUI in Frameworks */,
 				3770EEFC2AE3E6100079E36E /* FlowStacks in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -114,8 +114,6 @@
 		3770EF032AE3E9840079E36E /* Other */ = {
 			isa = PBXGroup;
 			children = (
-				3770EF052AE3E98F0079E36E /* Closure.swift */,
-				3770EF042AE3E98F0079E36E /* Localized.swift */,
 			);
 			path = Other;
 			sourceTree = "<group>";
@@ -196,6 +194,8 @@
 			name = "SwiftUI-App-Boilerplate";
 			packageProductDependencies = (
 				3770EEFB2AE3E6100079E36E /* FlowStacks */,
+				3766B4812DF969C400AC6FA9 /* SharedFoundation */,
+				3766B4842DF96AA700AC6FA9 /* SharedSwiftUI */,
 			);
 			productName = "SwiftUI-App-Boilerplate";
 			productReference = 37ED6DE52AE3E42B00D162EE /* SwiftUI-App-Boilerplate.app */;
@@ -271,6 +271,8 @@
 			mainGroup = 37ED6DDC2AE3E42B00D162EE;
 			packageReferences = (
 				3770EEFA2AE3E6100079E36E /* XCRemoteSwiftPackageReference "FlowStacks" */,
+				3766B4802DF969C400AC6FA9 /* XCRemoteSwiftPackageReference "SharedFoundation" */,
+				3766B4832DF96AA700AC6FA9 /* XCRemoteSwiftPackageReference "SharedSwiftUI" */,
 			);
 			productRefGroup = 37ED6DE62AE3E42B00D162EE /* Products */;
 			projectDirPath = "";
@@ -315,8 +317,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				3770EEFF2AE3E7640079E36E /* AppCoordinator.swift in Sources */,
-				3770EF062AE3E98F0079E36E /* Localized.swift in Sources */,
-				3770EF072AE3E98F0079E36E /* Closure.swift in Sources */,
 				37ED6DEB2AE3E42B00D162EE /* ContentView.swift in Sources */,
 				37ED6DE92AE3E42B00D162EE /* SwiftUI_App_BoilerplateApp.swift in Sources */,
 			);
@@ -644,6 +644,22 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		3766B4802DF969C400AC6FA9 /* XCRemoteSwiftPackageReference "SharedFoundation" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/ArkadiuszBanas/SharedFoundation";
+			requirement = {
+				branch = main;
+				kind = branch;
+			};
+		};
+		3766B4832DF96AA700AC6FA9 /* XCRemoteSwiftPackageReference "SharedSwiftUI" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/ArkadiuszBanas/SharedSwiftUI";
+			requirement = {
+				branch = main;
+				kind = branch;
+			};
+		};
 		3770EEFA2AE3E6100079E36E /* XCRemoteSwiftPackageReference "FlowStacks" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/johnpatrickmorgan/FlowStacks.git";
@@ -655,6 +671,16 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		3766B4812DF969C400AC6FA9 /* SharedFoundation */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 3766B4802DF969C400AC6FA9 /* XCRemoteSwiftPackageReference "SharedFoundation" */;
+			productName = SharedFoundation;
+		};
+		3766B4842DF96AA700AC6FA9 /* SharedSwiftUI */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 3766B4832DF96AA700AC6FA9 /* XCRemoteSwiftPackageReference "SharedSwiftUI" */;
+			productName = SharedSwiftUI;
+		};
 		3770EEFB2AE3E6100079E36E /* FlowStacks */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 3770EEFA2AE3E6100079E36E /* XCRemoteSwiftPackageReference "FlowStacks" */;
