@@ -8,6 +8,102 @@
 import SwiftUI
 import PhotosUI
 
+// MARK: - Blur Mask View
+struct BlurMaskView: View {
+    let circles: [EditableCircle]
+    let imageSize: CGSize
+    let imageScale: CGFloat
+    let imageOffset: CGSize
+    let containerSize: CGSize
+    
+    private func circleScreenPosition(for circle: EditableCircle) -> CGPoint {
+        // Calculate the actual image size when scaled and fit to container
+        let imageAspect = imageSize.width / imageSize.height
+        let containerAspect = containerSize.width / containerSize.height
+        
+        let actualImageSize: CGSize
+        if imageAspect > containerAspect {
+            // Image is constrained by width
+            actualImageSize = CGSize(
+                width: containerSize.width,
+                height: containerSize.width / imageAspect
+            )
+        } else {
+            // Image is constrained by height
+            actualImageSize = CGSize(
+                width: containerSize.height * imageAspect,
+                height: containerSize.height
+            )
+        }
+        
+        // Scale the image size by current scale
+        let scaledImageSize = CGSize(
+            width: actualImageSize.width * imageScale,
+            height: actualImageSize.height * imageScale
+        )
+        
+        // Calculate the image's top-left position in the container
+        let imageTopLeft = CGPoint(
+            x: (containerSize.width - scaledImageSize.width) / 2 + imageOffset.width,
+            y: (containerSize.height - scaledImageSize.height) / 2 + imageOffset.height
+        )
+        
+        // Convert normalized position to screen position
+        return CGPoint(
+            x: imageTopLeft.x + (circle.position.x * scaledImageSize.width),
+            y: imageTopLeft.y + (circle.position.y * scaledImageSize.height)
+        )
+    }
+    
+    var body: some View {
+        ZStack {
+            // Transparent background
+            Color.clear
+            
+            // Create circles for masking
+            ForEach(circles) { circle in
+                let screenPosition = circleScreenPosition(for: circle)
+                let scaledRadius = circle.radius * imageScale
+                
+                Circle()
+                    .fill(Color.white)
+                    .frame(width: scaledRadius * 2, height: scaledRadius * 2)
+                    .position(x: screenPosition.x, y: screenPosition.y)
+            }
+        }
+    }
+}
+
+// MARK: - Blurred Image View
+struct BlurredImageView: View {
+    let image: UIImage
+    let circles: [EditableCircle]
+    let imageSize: CGSize
+    @Binding var imageScale: CGFloat
+    @Binding var imageOffset: CGSize
+    
+    var body: some View {
+        GeometryReader { geometry in
+            ZoomableImageView(
+                image: image,
+                scale: $imageScale,
+                offset: $imageOffset,
+                onReset: {}
+            )
+            .blur(radius: 10)
+            .mask(
+                BlurMaskView(
+                    circles: circles,
+                    imageSize: imageSize,
+                    imageScale: imageScale,
+                    imageOffset: imageOffset,
+                    containerSize: geometry.size
+                )
+            )
+        }
+    }
+}
+
 // MARK: - Movable Circle View
 struct MovableCircleView: View {
     let circle: EditableCircle
@@ -105,9 +201,11 @@ struct MovableCircleView: View {
         let scaledRadius = circle.radius * imageScale
         
         Circle()
-            .fill(.ultraThinMaterial)
+            .stroke(Color.white, lineWidth: 2)
+            .fill(.white.opacity(0.01))
             .frame(width: scaledRadius * 2, height: scaledRadius * 2)
-            .position(x: screenPosition.x + dragOffset.width, y: screenPosition.y + dragOffset.height)
+            .position(x: screenPosition.x, y: screenPosition.y)
+            .offset(dragOffset)
             .gesture(
                 DragGesture()
                     .onChanged { value in
@@ -173,6 +271,7 @@ struct EditorView: View {
             // Image Display Area
             if let selectedImage = viewModel.selectedImage {
                 ZStack {
+                    // Base image layer
                     ZoomableImageView(
                         image: selectedImage,
                         scale: $viewModel.imageScale,
@@ -180,7 +279,16 @@ struct EditorView: View {
                         onReset: viewModel.resetZoom
                     )
                     
-                    // Circle Overlay
+                    // Blurred image layer with circle masks
+                    BlurredImageView(
+                        image: selectedImage,
+                        circles: viewModel.circles,
+                        imageSize: selectedImage.size,
+                        imageScale: $viewModel.imageScale,
+                        imageOffset: $viewModel.imageOffset
+                    )
+                    
+                    // Interactive circle overlay
                     CircleOverlayView(
                         circles: viewModel.circles,
                         imageSize: selectedImage.size,
