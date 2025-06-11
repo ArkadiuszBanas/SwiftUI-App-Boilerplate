@@ -12,7 +12,8 @@ import PhotosUI
 struct EditableCircle: Identifiable, Equatable {
     let id = UUID()
     var position: CGPoint  // Position relative to the image (normalized 0-1)
-    var radius: CGFloat = 50  // Radius in points
+    var width: CGFloat = 100  // Width in points
+    var height: CGFloat = 50  // Height in points
     
     init(position: CGPoint) {
         self.position = position

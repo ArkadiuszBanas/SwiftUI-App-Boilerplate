@@ -63,11 +63,12 @@ struct BlurMaskView: View {
             // Create circles for masking
             ForEach(circles) { circle in
                 let screenPosition = circleScreenPosition(for: circle)
-                let scaledRadius = circle.radius * imageScale
+                let scaledWidth = circle.width * imageScale
+                let scaledHeight = circle.height * imageScale
                 
-                Circle()
+                Ellipse()
                     .fill(Color.white)
-                    .frame(width: scaledRadius * 2, height: scaledRadius * 2)
+                    .frame(width: scaledWidth, height: scaledHeight)
                     .position(x: screenPosition.x, y: screenPosition.y)
             }
         }
@@ -198,12 +199,13 @@ struct MovableCircleView: View {
     
     var body: some View {
         let screenPosition = circleScreenPosition()
-        let scaledRadius = circle.radius * imageScale
+        let scaledWidth = circle.width * imageScale
+        let scaledHeight = circle.height * imageScale
         
-        Circle()
+        Ellipse()
             .stroke(Color.white, lineWidth: 2)
             .fill(.white.opacity(0.01))
-            .frame(width: scaledRadius * 2, height: scaledRadius * 2)
+            .frame(width: scaledWidth, height: scaledHeight)
             .position(x: screenPosition.x, y: screenPosition.y)
             .offset(dragOffset)
             .gesture(
@@ -225,7 +227,7 @@ struct MovableCircleView: View {
                     onRemove(circle)
                 }
             }
-            .accessibilityLabel("Blur circle")
+            .accessibilityLabel("Blur ellipse")
             .accessibilityHint("Drag to move, double tap to remove")
     }
 }
@@ -369,9 +371,9 @@ struct EditorView: View {
                         viewModel.addShape()
                     } label: {
                         VStack(spacing: 4) {
-                            Image(systemName: "circle.badge.plus")
+                            Image(systemName: "drop")
                                 .font(.system(size: 24))
-                            Text("Add Circle")
+                            Text("Add Blur")
                                 .font(.caption)
                         }
                         .foregroundColor(viewModel.selectedImage == nil ? .gray : .white)
@@ -379,8 +381,8 @@ struct EditorView: View {
                         .padding(.vertical, 12)
                     }
                     .disabled(viewModel.selectedImage == nil)
-                    .accessibilityLabel("Add Circle")
-                    .accessibilityHint("Adds a movable circle to blur areas of the image")
+                    .accessibilityLabel("Add Blur")
+                    .accessibilityHint("Adds a movable ellipse to blur areas of the image")
                     
                     // Export
                     Button {
