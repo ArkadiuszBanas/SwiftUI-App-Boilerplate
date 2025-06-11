@@ -467,91 +467,14 @@ struct EditorView: View {
             VStack {
                 Spacer()
                 
-                HStack(spacing: 0) {
-                    // Load Photo
-                    PhotosPicker(selection: $viewModel.selectedPhoto, matching: .images) {
-                        VStack(spacing: 4) {
-                            Image(systemName: "photo")
-                                .font(.system(size: 24))
-                            Text("Load Photo")
-                                .font(.caption)
-                        }
-                        .foregroundColor(.gray)
-                        .frame(maxWidth: .infinity)
-                        .padding(.vertical, 12)
-                    }
-                    .accessibilityLabel("Load Photo")
-                    .accessibilityHint("Opens photo gallery to select an image")
-                    
-                    // Auto Detect Faces
-                    Button {
-                        Task {
-                            await viewModel.detectFaces()
-                        }
-                    } label: {
-                        VStack(spacing: 4) {
-                            ZStack {
-                                Image(systemName: "face.dashed")
-                                    .font(.system(size: 24))
-                                
-                                if viewModel.isDetectingFaces {
-                                    ProgressView()
-                                        .scaleEffect(0.7)
-                                        .progressViewStyle(CircularProgressViewStyle(tint: .white))
-                                }
-                            }
-                            Text("Detect Faces")
-                                .font(.caption)
-                        }
-                        .foregroundColor(viewModel.selectedImage == nil ? .gray : .white)
-                        .frame(maxWidth: .infinity)
-                        .padding(.vertical, 12)
-                    }
-                    .disabled(viewModel.selectedImage == nil || viewModel.isDetectingFaces)
-                    .accessibilityLabel("Auto Detect Faces")
-                    .accessibilityHint("Automatically detects faces in the selected image")
-                    
-                    // Add Shape
-                    Button {
-                        viewModel.addShape()
-                    } label: {
-                        VStack(spacing: 4) {
-                            Image(systemName: "drop")
-                                .font(.system(size: 24))
-                            Text("Add Blur")
-                                .font(.caption)
-                        }
-                        .foregroundColor(viewModel.selectedImage == nil ? .gray : .white)
-                        .frame(maxWidth: .infinity)
-                        .padding(.vertical, 12)
-                    }
-                    .disabled(viewModel.selectedImage == nil)
-                    .accessibilityLabel("Add Blur")
-                    .accessibilityHint("Adds a movable ellipse to blur areas of the image")
-                    
-                    // Export
-                    Button {
-                        viewModel.exportImage()
-                    } label: {
-                        VStack(spacing: 4) {
-                            Image(systemName: "square.and.arrow.up")
-                                .font(.system(size: 24))
-                            Text("Export")
-                                .font(.caption)
-                        }
-                        .foregroundColor(.gray)
-                        .frame(maxWidth: .infinity)
-                        .padding(.vertical, 12)
-                    }
-                    .disabled(viewModel.selectedImage == nil)
-                    .accessibilityLabel("Export Image")
-                    .accessibilityHint("Saves the edited image to your photo library")
-                }
-                .background(
-                    Rectangle()
-                        .fill(.ultraThickMaterial)
+                BottomToolbar(
+                    selectedPhoto: $viewModel.selectedPhoto,
+                    selectedImage: viewModel.selectedImage,
+                    isDetectingFaces: viewModel.isDetectingFaces,
+                    onDetectFaces: viewModel.detectFaces,
+                    onAddShape: viewModel.addShape,
+                    onExport: viewModel.exportImage
                 )
-                .edgesIgnoringSafeArea(.bottom)
             }
         }
         .onChange(of: viewModel.selectedPhoto) { _, _ in
