@@ -89,6 +89,14 @@ struct EditableCircle: Identifiable, Equatable {
         circles[index].position = newPosition
     }
     
+    func updateCircleSize(_ circle: EditableCircle, width: CGFloat, height: CGFloat) {
+        guard let index = circles.firstIndex(of: circle) else { return }
+        // Ensure minimum size constraints
+        let minSize: CGFloat = 30
+        circles[index].width = max(minSize, width)
+        circles[index].height = max(minSize, height)
+    }
+    
     func removeCircle(_ circle: EditableCircle) {
         circles.removeAll { $0.id == circle.id }
     }

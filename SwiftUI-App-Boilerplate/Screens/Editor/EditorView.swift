@@ -105,6 +105,74 @@ struct BlurredImageView: View {
     }
 }
 
+// MARK: - Resize Handle View
+struct ResizeHandleView: View {
+    enum HandlePosition {
+        case top, bottom, leading, trailing
+    }
+    
+    let position: HandlePosition
+    let centerPosition: CGPoint
+    let width: CGFloat
+    let height: CGFloat
+    let circle: EditableCircle
+    let imageScale: CGFloat
+    let onSizeChange: (EditableCircle, CGFloat, CGFloat) -> Void
+    
+    @State private var dragOffset: CGSize = .zero
+    
+    private var handlePosition: CGPoint {
+        switch position {
+        case .top:
+            return CGPoint(x: centerPosition.x, y: centerPosition.y - height/2)
+        case .bottom:
+            return CGPoint(x: centerPosition.x, y: centerPosition.y + height/2)
+        case .leading:
+            return CGPoint(x: centerPosition.x - width/2, y: centerPosition.y)
+        case .trailing:
+            return CGPoint(x: centerPosition.x + width/2, y: centerPosition.y)
+        }
+    }
+    
+    var body: some View {
+        Image(systemName: "plus.circle.fill")
+            .font(.system(size: 16))
+            .foregroundColor(.white)
+            .background(Circle().fill(Color.black.opacity(0.3)))
+            .position(x: handlePosition.x, y: handlePosition.y)
+            .offset(dragOffset)
+            .gesture(
+                DragGesture()
+                    .onChanged { value in
+                        dragOffset = value.translation
+                    }
+                    .onEnded { value in
+                        let translation = value.translation
+                        
+                        // Calculate new dimensions based on handle position and drag distance
+                        var newWidth = circle.width
+                        var newHeight = circle.height
+                        
+                        switch position {
+                        case .top:
+                            newHeight = circle.height - (translation.height / imageScale)
+                        case .bottom:
+                            newHeight = circle.height + (translation.height / imageScale)
+                        case .leading:
+                            newWidth = circle.width - (translation.width / imageScale)
+                        case .trailing:
+                            newWidth = circle.width + (translation.width / imageScale)
+                        }
+                        
+                        onSizeChange(circle, newWidth, newHeight)
+                        dragOffset = .zero
+                    }
+            )
+            .accessibilityLabel("Resize handle")
+            .accessibilityHint("Drag to resize the blur ellipse")
+    }
+}
+
 // MARK: - Movable Circle View
 struct MovableCircleView: View {
     let circle: EditableCircle
@@ -113,6 +181,7 @@ struct MovableCircleView: View {
     let imageOffset: CGSize
     let containerSize: CGSize
     let onPositionChange: (EditableCircle, CGPoint) -> Void
+    let onSizeChange: (EditableCircle, CGFloat, CGFloat) -> Void
     let onRemove: (EditableCircle) -> Void
     
     @State private var dragOffset: CGSize = .zero
@@ -202,33 +271,77 @@ struct MovableCircleView: View {
         let scaledWidth = circle.width * imageScale
         let scaledHeight = circle.height * imageScale
         
-        Ellipse()
-            .stroke(Color.white, lineWidth: 2)
-            .fill(.white.opacity(0.01))
-            .frame(width: scaledWidth, height: scaledHeight)
-            .position(x: screenPosition.x, y: screenPosition.y)
-            .offset(dragOffset)
-            .gesture(
-                DragGesture()
-                    .onChanged { value in
-                        dragOffset = value.translation
+        ZStack {
+            // Main ellipse
+            Ellipse()
+                .stroke(Color.white, lineWidth: 2)
+                .fill(.white.opacity(0.01))
+                .frame(width: scaledWidth, height: scaledHeight)
+                .position(x: screenPosition.x, y: screenPosition.y)
+                .offset(dragOffset)
+                .gesture(
+                    DragGesture()
+                        .onChanged { value in
+                            dragOffset = value.translation
+                        }
+                        .onEnded { value in
+                            let finalPosition = CGPoint(
+                                x: screenPosition.x + value.translation.width,
+                                y: screenPosition.y + value.translation.height
+                            )
+                            updateCirclePosition(from: finalPosition)
+                            dragOffset = .zero
+                        }
+                )
+                .onTapGesture(count: 2) {
+                    withAnimation(.spring()) {
+                        onRemove(circle)
                     }
-                    .onEnded { value in
-                        let finalPosition = CGPoint(
-                            x: screenPosition.x + value.translation.width,
-                            y: screenPosition.y + value.translation.height
-                        )
-                        updateCirclePosition(from: finalPosition)
-                        dragOffset = .zero
-                    }
-            )
-            .onTapGesture(count: 2) {
-                withAnimation(.spring()) {
-                    onRemove(circle)
                 }
-            }
-            .accessibilityLabel("Blur ellipse")
-            .accessibilityHint("Drag to move, double tap to remove")
+                .accessibilityLabel("Blur ellipse")
+                .accessibilityHint("Drag to move, double tap to remove")
+            
+            // Resize handles
+            ResizeHandleView(
+                position: .top,
+                centerPosition: screenPosition,
+                width: scaledWidth,
+                height: scaledHeight,
+                circle: circle,
+                imageScale: imageScale,
+                onSizeChange: onSizeChange
+            )
+            
+            ResizeHandleView(
+                position: .bottom,
+                centerPosition: screenPosition,
+                width: scaledWidth,
+                height: scaledHeight,
+                circle: circle,
+                imageScale: imageScale,
+                onSizeChange: onSizeChange
+            )
+            
+            ResizeHandleView(
+                position: .leading,
+                centerPosition: screenPosition,
+                width: scaledWidth,
+                height: scaledHeight,
+                circle: circle,
+                imageScale: imageScale,
+                onSizeChange: onSizeChange
+            )
+            
+            ResizeHandleView(
+                position: .trailing,
+                centerPosition: screenPosition,
+                width: scaledWidth,
+                height: scaledHeight,
+                circle: circle,
+                imageScale: imageScale,
+                onSizeChange: onSizeChange
+            )
+        }
     }
 }
 
@@ -239,6 +352,7 @@ struct CircleOverlayView: View {
     let imageScale: CGFloat
     let imageOffset: CGSize
     let onPositionChange: (EditableCircle, CGPoint) -> Void
+    let onSizeChange: (EditableCircle, CGFloat, CGFloat) -> Void
     let onRemove: (EditableCircle) -> Void
     
     var body: some View {
@@ -251,6 +365,7 @@ struct CircleOverlayView: View {
                     imageOffset: imageOffset,
                     containerSize: geometry.size,
                     onPositionChange: onPositionChange,
+                    onSizeChange: onSizeChange,
                     onRemove: onRemove
                 )
             }
@@ -297,6 +412,7 @@ struct EditorView: View {
                         imageScale: viewModel.imageScale,
                         imageOffset: viewModel.imageOffset,
                         onPositionChange: viewModel.updateCirclePosition,
+                        onSizeChange: viewModel.updateCircleSize,
                         onRemove: viewModel.removeCircle
                     )
                 }
