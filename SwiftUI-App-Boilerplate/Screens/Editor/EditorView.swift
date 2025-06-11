@@ -405,8 +405,8 @@ struct EditorView: View {
     var body: some View {
         ZStack {
             // Background color
-            Color.black.edgesIgnoringSafeArea(.all)
-            
+            Color(.systemGroupedBackground).edgesIgnoringSafeArea(.all)
+
             // Image Display Area
             if let selectedImage = viewModel.selectedImage {
                 ZStack {
@@ -476,7 +476,7 @@ struct EditorView: View {
                             Text("Load Photo")
                                 .font(.caption)
                         }
-                        .foregroundColor(.white)
+                        .foregroundColor(.gray)
                         .frame(maxWidth: .infinity)
                         .padding(.vertical, 12)
                     }
@@ -539,7 +539,7 @@ struct EditorView: View {
                             Text("Export")
                                 .font(.caption)
                         }
-                        .foregroundColor(viewModel.selectedImage == nil ? .gray : .white)
+                        .foregroundColor(.gray)
                         .frame(maxWidth: .infinity)
                         .padding(.vertical, 12)
                     }
@@ -549,8 +549,7 @@ struct EditorView: View {
                 }
                 .background(
                     Rectangle()
-                        .fill(.ultraThinMaterial)
-                        .environment(\.colorScheme, .dark)
+                        .fill(.ultraThickMaterial)
                 )
                 .edgesIgnoringSafeArea(.bottom)
             }
