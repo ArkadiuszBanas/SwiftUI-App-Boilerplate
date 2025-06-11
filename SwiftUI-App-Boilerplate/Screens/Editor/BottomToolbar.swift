@@ -61,7 +61,9 @@ struct BottomToolbar: View {
         .background(
             Rectangle()
                 .fill(.ultraThickMaterial)
+                .cornerRadius(50)
         )
+        .padding(.horizontal)
         .edgesIgnoringSafeArea(.bottom)
     }
 }
