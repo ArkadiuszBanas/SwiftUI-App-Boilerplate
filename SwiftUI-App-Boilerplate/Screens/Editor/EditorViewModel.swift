@@ -9,6 +9,7 @@ import SwiftUI
 import PhotosUI
 
 @Observable final class EditorViewModel {
+
     var selectedPhoto: PhotosPickerItem?
     var selectedImage: UIImage?
     var imageScale: CGFloat = 1.0
