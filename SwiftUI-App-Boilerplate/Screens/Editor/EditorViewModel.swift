@@ -30,6 +30,7 @@ struct EditableCircle: Identifiable, Equatable {
     
     // MARK: - Circle Management
     var circles: [EditableCircle] = []
+    var selectedCircleId: UUID?
     
     func loadImage() async {
         guard let selectedPhoto else { return }
@@ -55,6 +56,7 @@ struct EditableCircle: Identifiable, Equatable {
     
     func clearCircles() {
         circles.removeAll()
+        selectedCircleId = nil
     }
     
     func detectFaces() async {
@@ -81,6 +83,9 @@ struct EditableCircle: Identifiable, Equatable {
         let newCircle = EditableCircle(position: CGPoint(x: 0.5, y: 0.5))
         circles.append(newCircle)
         
+        // Automatically select the newly created circle
+        selectedCircleId = newCircle.id
+        
         print("Added circle at center - Total circles: \(circles.count)")
     }
     
@@ -99,6 +104,22 @@ struct EditableCircle: Identifiable, Equatable {
     
     func removeCircle(_ circle: EditableCircle) {
         circles.removeAll { $0.id == circle.id }
+        if selectedCircleId == circle.id {
+            selectedCircleId = nil
+        }
+    }
+    
+    // MARK: - Selection Management
+    func selectCircle(_ circle: EditableCircle) {
+        selectedCircleId = circle.id
+    }
+    
+    func deselectCircle() {
+        selectedCircleId = nil
+    }
+    
+    func isCircleSelected(_ circle: EditableCircle) -> Bool {
+        return selectedCircleId == circle.id
     }
     
     func exportImage() {

@@ -180,9 +180,12 @@ struct MovableCircleView: View {
     let imageScale: CGFloat
     let imageOffset: CGSize
     let containerSize: CGSize
+    let isSelected: Bool
     let onPositionChange: (EditableCircle, CGPoint) -> Void
     let onSizeChange: (EditableCircle, CGFloat, CGFloat) -> Void
     let onRemove: (EditableCircle) -> Void
+    let onSelect: (EditableCircle) -> Void
+    let onDeselect: () -> Void
     
     @State private var dragOffset: CGSize = .zero
     
@@ -274,7 +277,7 @@ struct MovableCircleView: View {
         ZStack {
             // Main ellipse
             Ellipse()
-                .stroke(Color.white, lineWidth: 2)
+                .stroke(isSelected ? Color.white : Color.clear, lineWidth: isSelected ? 2 : 0)
                 .fill(.white.opacity(0.01))
                 .frame(width: scaledWidth, height: scaledHeight)
                 .position(x: screenPosition.x, y: screenPosition.y)
@@ -282,65 +285,78 @@ struct MovableCircleView: View {
                 .gesture(
                     DragGesture()
                         .onChanged { value in
-                            dragOffset = value.translation
+                            if isSelected {
+                                dragOffset = value.translation
+                            }
                         }
                         .onEnded { value in
-                            let finalPosition = CGPoint(
-                                x: screenPosition.x + value.translation.width,
-                                y: screenPosition.y + value.translation.height
-                            )
-                            updateCirclePosition(from: finalPosition)
-                            dragOffset = .zero
+                            if isSelected {
+                                let finalPosition = CGPoint(
+                                    x: screenPosition.x + value.translation.width,
+                                    y: screenPosition.y + value.translation.height
+                                )
+                                updateCirclePosition(from: finalPosition)
+                                dragOffset = .zero
+                            }
                         }
                 )
+                .onTapGesture {
+                    if isSelected {
+                        onDeselect()
+                    } else {
+                        onSelect(circle)
+                    }
+                }
                 .onTapGesture(count: 2) {
                     withAnimation(.spring()) {
                         onRemove(circle)
                     }
                 }
                 .accessibilityLabel("Blur ellipse")
-                .accessibilityHint("Drag to move, double tap to remove")
+                .accessibilityHint("Tap to select, drag to move when selected, double tap to remove")
             
-            // Resize handles
-            ResizeHandleView(
-                position: .top,
-                centerPosition: screenPosition,
-                width: scaledWidth,
-                height: scaledHeight,
-                circle: circle,
-                imageScale: imageScale,
-                onSizeChange: onSizeChange
-            )
-            
-            ResizeHandleView(
-                position: .bottom,
-                centerPosition: screenPosition,
-                width: scaledWidth,
-                height: scaledHeight,
-                circle: circle,
-                imageScale: imageScale,
-                onSizeChange: onSizeChange
-            )
-            
-            ResizeHandleView(
-                position: .leading,
-                centerPosition: screenPosition,
-                width: scaledWidth,
-                height: scaledHeight,
-                circle: circle,
-                imageScale: imageScale,
-                onSizeChange: onSizeChange
-            )
-            
-            ResizeHandleView(
-                position: .trailing,
-                centerPosition: screenPosition,
-                width: scaledWidth,
-                height: scaledHeight,
-                circle: circle,
-                imageScale: imageScale,
-                onSizeChange: onSizeChange
-            )
+            // Resize handles (only show when selected)
+            if isSelected {
+                ResizeHandleView(
+                    position: .top,
+                    centerPosition: screenPosition,
+                    width: scaledWidth,
+                    height: scaledHeight,
+                    circle: circle,
+                    imageScale: imageScale,
+                    onSizeChange: onSizeChange
+                )
+                
+                ResizeHandleView(
+                    position: .bottom,
+                    centerPosition: screenPosition,
+                    width: scaledWidth,
+                    height: scaledHeight,
+                    circle: circle,
+                    imageScale: imageScale,
+                    onSizeChange: onSizeChange
+                )
+                
+                ResizeHandleView(
+                    position: .leading,
+                    centerPosition: screenPosition,
+                    width: scaledWidth,
+                    height: scaledHeight,
+                    circle: circle,
+                    imageScale: imageScale,
+                    onSizeChange: onSizeChange
+                )
+                
+                ResizeHandleView(
+                    position: .trailing,
+                    centerPosition: screenPosition,
+                    width: scaledWidth,
+                    height: scaledHeight,
+                    circle: circle,  
+                    imageScale: imageScale,
+                    onSizeChange: onSizeChange
+                )
+            }
         }
     }
 }
@@ -351,9 +367,12 @@ struct CircleOverlayView: View {
     let imageSize: CGSize
     let imageScale: CGFloat
     let imageOffset: CGSize
+    let selectedCircleId: UUID?
     let onPositionChange: (EditableCircle, CGPoint) -> Void
     let onSizeChange: (EditableCircle, CGFloat, CGFloat) -> Void
     let onRemove: (EditableCircle) -> Void
+    let onSelect: (EditableCircle) -> Void
+    let onDeselect: () -> Void
     
     var body: some View {
         GeometryReader { geometry in
@@ -364,9 +383,12 @@ struct CircleOverlayView: View {
                     imageScale: imageScale,
                     imageOffset: imageOffset,
                     containerSize: geometry.size,
+                    isSelected: selectedCircleId == circle.id,
                     onPositionChange: onPositionChange,
                     onSizeChange: onSizeChange,
-                    onRemove: onRemove
+                    onRemove: onRemove,
+                    onSelect: onSelect,
+                    onDeselect: onDeselect
                 )
             }
         }
@@ -411,13 +433,20 @@ struct EditorView: View {
                         imageSize: selectedImage.size,
                         imageScale: viewModel.imageScale,
                         imageOffset: viewModel.imageOffset,
+                        selectedCircleId: viewModel.selectedCircleId,
                         onPositionChange: viewModel.updateCirclePosition,
                         onSizeChange: viewModel.updateCircleSize,
-                        onRemove: viewModel.removeCircle
+                        onRemove: viewModel.removeCircle,
+                        onSelect: viewModel.selectCircle,
+                        onDeselect: viewModel.deselectCircle
                     )
                 }
                 .frame(maxWidth: .infinity, maxHeight: .infinity)
                 .edgesIgnoringSafeArea(.all)
+                .onTapGesture {
+                    // Deselect all circles when tapping empty space
+                    viewModel.deselectCircle()
+                }
             } else {
                 // Placeholder when no image is selected
                 VStack {
