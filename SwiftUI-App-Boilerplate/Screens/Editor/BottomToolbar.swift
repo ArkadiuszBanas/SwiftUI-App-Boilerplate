@@ -17,49 +17,47 @@ struct BottomToolbar: View {
                     Text("Load Photo")
                         .font(.caption)
                 }
-                .foregroundColor(.gray)
                 .frame(maxWidth: .infinity)
                 .padding(.vertical, 12)
             }
             .accessibilityLabel("Load Photo")
             .accessibilityHint("Opens photo gallery to select an image")
             
-            // Add Shape
-            Button {
-                onAddShape()
-            } label: {
-                VStack(spacing: 4) {
-                    Image(systemName: "drop")
-                        .font(.system(size: 24))
-                    Text("Add Blur")
-                        .font(.caption)
+            if selectedImage != nil {
+                // Add Shape
+                Button {
+                    onAddShape()
+                } label: {
+                    VStack(spacing: 4) {
+                        Image(systemName: "drop")
+                            .font(.system(size: 24))
+                        Text("Add Blur")
+                            .font(.caption)
+                    }
+                    .frame(maxWidth: .infinity)
+                    .padding(.vertical, 12)
                 }
-                .foregroundColor(selectedImage == nil ? .gray : .white)
-                .frame(maxWidth: .infinity)
-                .padding(.vertical, 12)
-            }
-            .disabled(selectedImage == nil)
-            .accessibilityLabel("Add Blur")
-            .accessibilityHint("Adds a movable ellipse to blur areas of the image")
-            
-            // Export
-            Button {
-                onExport()
-            } label: {
-                VStack(spacing: 4) {
-                    Image(systemName: "square.and.arrow.up")
-                        .font(.system(size: 24))
-                    Text("Export")
-                        .font(.caption)
+                .accessibilityLabel("Add Blur")
+                .accessibilityHint("Adds a movable ellipse to blur areas of the image")
+                
+                // Export
+                Button {
+                    onExport()
+                } label: {
+                    VStack(spacing: 4) {
+                        Image(systemName: "square.and.arrow.up")
+                            .font(.system(size: 24))
+                        Text("Export")
+                            .font(.caption)
+                    }
+                    .frame(maxWidth: .infinity)
+                    .padding(.vertical, 12)
                 }
-                .foregroundColor(.gray)
-                .frame(maxWidth: .infinity)
-                .padding(.vertical, 12)
+                .accessibilityLabel("Export Image")
+                .accessibilityHint("Saves the edited image to your photo library")
             }
-            .disabled(selectedImage == nil)
-            .accessibilityLabel("Export Image")
-            .accessibilityHint("Saves the edited image to your photo library")
         }
+        .foregroundColor(.gray)
         .background(
             Rectangle()
                 .fill(.ultraThickMaterial)
