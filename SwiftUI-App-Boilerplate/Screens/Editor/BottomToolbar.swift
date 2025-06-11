@@ -4,8 +4,6 @@ import PhotosUI
 struct BottomToolbar: View {
     @Binding var selectedPhoto: PhotosPickerItem?
     let selectedImage: UIImage?
-    let isDetectingFaces: Bool
-    let onDetectFaces: () async -> Void
     let onAddShape: () -> Void
     let onExport: () -> Void
     
@@ -25,34 +23,6 @@ struct BottomToolbar: View {
             }
             .accessibilityLabel("Load Photo")
             .accessibilityHint("Opens photo gallery to select an image")
-            
-            // Auto Detect Faces
-            Button {
-                Task {
-                    await onDetectFaces()
-                }
-            } label: {
-                VStack(spacing: 4) {
-                    ZStack {
-                        Image(systemName: "face.dashed")
-                            .font(.system(size: 24))
-                        
-                        if isDetectingFaces {
-                            ProgressView()
-                                .scaleEffect(0.7)
-                                .progressViewStyle(CircularProgressViewStyle(tint: .white))
-                        }
-                    }
-                    Text("Detect Faces")
-                        .font(.caption)
-                }
-                .foregroundColor(selectedImage == nil ? .gray : .white)
-                .frame(maxWidth: .infinity)
-                .padding(.vertical, 12)
-            }
-            .disabled(selectedImage == nil || isDetectingFaces)
-            .accessibilityLabel("Auto Detect Faces")
-            .accessibilityHint("Automatically detects faces in the selected image")
             
             // Add Shape
             Button {
@@ -102,8 +72,6 @@ struct BottomToolbar: View {
     BottomToolbar(
         selectedPhoto: .constant(nil),
         selectedImage: nil,
-        isDetectingFaces: false,
-        onDetectFaces: {},
         onAddShape: {},
         onExport: {}
     )

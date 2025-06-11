@@ -470,8 +470,6 @@ struct EditorView: View {
                 BottomToolbar(
                     selectedPhoto: $viewModel.selectedPhoto,
                     selectedImage: viewModel.selectedImage,
-                    isDetectingFaces: viewModel.isDetectingFaces,
-                    onDetectFaces: viewModel.detectFaces,
                     onAddShape: viewModel.addShape,
                     onExport: viewModel.exportImage
                 )
