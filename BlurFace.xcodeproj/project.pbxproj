@@ -14,7 +14,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		37ED6DE52AE3E42B00D162EE /* BlurFace.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BlurFace.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		37ED6DE52AE3E42B00D162EE /* Blur Face.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Blur Face.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
@@ -49,7 +49,7 @@
 		37ED6DE62AE3E42B00D162EE /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				37ED6DE52AE3E42B00D162EE /* BlurFace.app */,
+				37ED6DE52AE3E42B00D162EE /* Blur Face.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -57,9 +57,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		37ED6DE42AE3E42B00D162EE /* BlurFace */ = {
+		37ED6DE42AE3E42B00D162EE /* Blur Face */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 37ED6E092AE3E42C00D162EE /* Build configuration list for PBXNativeTarget "BlurFace" */;
+			buildConfigurationList = 37ED6E092AE3E42C00D162EE /* Build configuration list for PBXNativeTarget "Blur Face" */;
 			buildPhases = (
 				37ED6DE12AE3E42B00D162EE /* Sources */,
 				37ED6DE22AE3E42B00D162EE /* Frameworks */,
@@ -73,7 +73,7 @@
 				3766B4872DF96BAD00AC6FA9 /* Core */,
 				3766B4912DF96BAD00AC6FA9 /* BlurFace */,
 			);
-			name = BlurFace;
+			name = "Blur Face";
 			packageProductDependencies = (
 				3770EEFB2AE3E6100079E36E /* FlowStacks */,
 				3766B4812DF969C400AC6FA9 /* SharedFoundation */,
@@ -81,7 +81,7 @@
 				3766B4C22DFAD65B00AC6FA9 /* OnBoardingKit */,
 			);
 			productName = BlurFace;
-			productReference = 37ED6DE52AE3E42B00D162EE /* BlurFace.app */;
+			productReference = 37ED6DE52AE3E42B00D162EE /* Blur Face.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -118,7 +118,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				37ED6DE42AE3E42B00D162EE /* BlurFace */,
+				37ED6DE42AE3E42B00D162EE /* Blur Face */,
 			);
 		};
 /* End PBXProject section */
@@ -274,21 +274,26 @@
 				DEVELOPMENT_TEAM = NRDZ7MZXX5;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.photography";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = ArkadiuszBanas.BlurFace;
+				PRODUCT_BUNDLE_IDENTIFIER = com.arkadiuszbanas.blurface;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -303,21 +308,26 @@
 				DEVELOPMENT_TEAM = NRDZ7MZXX5;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.photography";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = ArkadiuszBanas.BlurFace;
+				PRODUCT_BUNDLE_IDENTIFIER = com.arkadiuszbanas.blurface;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};
@@ -333,7 +343,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		37ED6E092AE3E42C00D162EE /* Build configuration list for PBXNativeTarget "BlurFace" */ = {
+		37ED6E092AE3E42C00D162EE /* Build configuration list for PBXNativeTarget "Blur Face" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				37ED6E0A2AE3E42C00D162EE /* Debug */,
