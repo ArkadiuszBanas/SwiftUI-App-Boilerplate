@@ -10,10 +10,8 @@
 		3766B4822DF969C400AC6FA9 /* SharedFoundation in Frameworks */ = {isa = PBXBuildFile; productRef = 3766B4812DF969C400AC6FA9 /* SharedFoundation */; };
 		3766B4852DF96AA700AC6FA9 /* SharedSwiftUI in Frameworks */ = {isa = PBXBuildFile; productRef = 3766B4842DF96AA700AC6FA9 /* SharedSwiftUI */; };
 		3766B4C32DFAD65B00AC6FA9 /* OnBoardingKit in Frameworks */ = {isa = PBXBuildFile; productRef = 3766B4C22DFAD65B00AC6FA9 /* OnBoardingKit */; };
-		3766B4C92DFB088E00AC6FA9 /* ReceiptParser in Frameworks */ = {isa = PBXBuildFile; productRef = 3766B4C82DFB088E00AC6FA9 /* ReceiptParser */; };
 		3766B4CB2DFB088E00AC6FA9 /* RevenueCat in Frameworks */ = {isa = PBXBuildFile; productRef = 3766B4CA2DFB088E00AC6FA9 /* RevenueCat */; };
 		3766B4CD2DFB088E00AC6FA9 /* RevenueCatUI in Frameworks */ = {isa = PBXBuildFile; productRef = 3766B4CC2DFB088E00AC6FA9 /* RevenueCatUI */; };
-		3766B4CF2DFB088E00AC6FA9 /* RevenueCat_CustomEntitlementComputation in Frameworks */ = {isa = PBXBuildFile; productRef = 3766B4CE2DFB088E00AC6FA9 /* RevenueCat_CustomEntitlementComputation */; };
 		3770EEFC2AE3E6100079E36E /* FlowStacks in Frameworks */ = {isa = PBXBuildFile; productRef = 3770EEFB2AE3E6100079E36E /* FlowStacks */; };
 /* End PBXBuildFile section */
 
@@ -37,8 +35,6 @@
 				3766B4CB2DFB088E00AC6FA9 /* RevenueCat in Frameworks */,
 				3766B4852DF96AA700AC6FA9 /* SharedSwiftUI in Frameworks */,
 				3770EEFC2AE3E6100079E36E /* FlowStacks in Frameworks */,
-				3766B4C92DFB088E00AC6FA9 /* ReceiptParser in Frameworks */,
-				3766B4CF2DFB088E00AC6FA9 /* RevenueCat_CustomEntitlementComputation in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -87,10 +83,8 @@
 				3766B4812DF969C400AC6FA9 /* SharedFoundation */,
 				3766B4842DF96AA700AC6FA9 /* SharedSwiftUI */,
 				3766B4C22DFAD65B00AC6FA9 /* OnBoardingKit */,
-				3766B4C82DFB088E00AC6FA9 /* ReceiptParser */,
 				3766B4CA2DFB088E00AC6FA9 /* RevenueCat */,
 				3766B4CC2DFB088E00AC6FA9 /* RevenueCatUI */,
-				3766B4CE2DFB088E00AC6FA9 /* RevenueCat_CustomEntitlementComputation */,
 			);
 			productName = BlurFace;
 			productReference = 37ED6DE52AE3E42B00D162EE /* Blur Face.app */;
@@ -426,11 +420,6 @@
 			package = 3766B4C12DFAD3F100AC6FA9 /* XCRemoteSwiftPackageReference "OnBoardingKit" */;
 			productName = OnBoardingKit;
 		};
-		3766B4C82DFB088E00AC6FA9 /* ReceiptParser */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 3766B4C72DFB088E00AC6FA9 /* XCRemoteSwiftPackageReference "purchases-ios-spm" */;
-			productName = ReceiptParser;
-		};
 		3766B4CA2DFB088E00AC6FA9 /* RevenueCat */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 3766B4C72DFB088E00AC6FA9 /* XCRemoteSwiftPackageReference "purchases-ios-spm" */;
@@ -440,11 +429,6 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 3766B4C72DFB088E00AC6FA9 /* XCRemoteSwiftPackageReference "purchases-ios-spm" */;
 			productName = RevenueCatUI;
-		};
-		3766B4CE2DFB088E00AC6FA9 /* RevenueCat_CustomEntitlementComputation */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 3766B4C72DFB088E00AC6FA9 /* XCRemoteSwiftPackageReference "purchases-ios-spm" */;
-			productName = RevenueCat_CustomEntitlementComputation;
 		};
 		3770EEFB2AE3E6100079E36E /* FlowStacks */ = {
 			isa = XCSwiftPackageProductDependency;
