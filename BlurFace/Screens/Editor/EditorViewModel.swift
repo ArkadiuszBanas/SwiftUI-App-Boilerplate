@@ -37,7 +37,14 @@ struct EditableCircle: Identifiable, Equatable {
     // MARK: - Export Management
     var showShareSheet = false
     var exportedImage: UIImage?
-    
+
+    let storeManager: StoreManager
+    var showPaywall = false
+
+    init(storeManager: StoreManager = RevenueCatStoreManager()) {
+        self.storeManager = storeManager
+    }
+
     func loadImage() async {
         guard let selectedPhoto else { return }
         
@@ -128,18 +135,31 @@ struct EditableCircle: Identifiable, Equatable {
         return selectedCircleId == circle.id
     }
     
-    func exportImage() {
+    func onTapExportImage() async {
+        let isPro = try? await storeManager.isProEnabled()
+
+        if isPro ?? true {
+            export()
+        } else {
+            showPaywall = true
+        }
+    }
+
+    func onHidePaywall() {
+        export()
+    }
+
+    private func export() {
         guard let selectedImage else { return }
-        
         print("Exporting image...")
-        
+
         // Render the final image with blur effects
         if let processedImage = renderImageWithBlur(selectedImage) {
             exportedImage = processedImage
             showShareSheet = true
         }
     }
-    
+
     private func renderImageWithBlur(_ originalImage: UIImage) -> UIImage? {
         guard !circles.isEmpty else {
             // If no circles, return original image

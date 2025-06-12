@@ -7,6 +7,7 @@
 
 import SwiftUI
 import PhotosUI
+import RevenueCatUI
 
 // MARK: - Blur Mask View
 struct BlurMaskView: View {
@@ -471,7 +472,11 @@ struct EditorView: View {
                     selectedPhoto: $viewModel.selectedPhoto,
                     selectedImage: viewModel.selectedImage,
                     onAddShape: viewModel.addShape,
-                    onExport: viewModel.exportImage
+                    onExport: {
+                        Task {
+                            await viewModel.onTapExportImage()
+                        }
+                    }
                 )
             }
         }
@@ -484,6 +489,12 @@ struct EditorView: View {
             if let exportedImage = viewModel.exportedImage {
                 ShareSheet(activityItems: [exportedImage])
             }
+        }
+        .sheet(isPresented: $viewModel.showPaywall) {
+            PaywallView()
+                .onDisappear() {
+                    viewModel.onHidePaywall()
+                }
         }
     }
 }
