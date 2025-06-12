@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import OnBoardingKit
 
 @main
 struct BlurFaceApp: App {
@@ -13,6 +14,7 @@ struct BlurFaceApp: App {
     var body: some Scene {
         WindowGroup {
             AppCoordinator()
+                .presentOnBoarding(BlurFaceOnboarding())
         }
     }
 }

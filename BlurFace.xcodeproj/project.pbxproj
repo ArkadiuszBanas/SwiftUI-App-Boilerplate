@@ -9,16 +9,17 @@
 /* Begin PBXBuildFile section */
 		3766B4822DF969C400AC6FA9 /* SharedFoundation in Frameworks */ = {isa = PBXBuildFile; productRef = 3766B4812DF969C400AC6FA9 /* SharedFoundation */; };
 		3766B4852DF96AA700AC6FA9 /* SharedSwiftUI in Frameworks */ = {isa = PBXBuildFile; productRef = 3766B4842DF96AA700AC6FA9 /* SharedSwiftUI */; };
+		3766B4C32DFAD65B00AC6FA9 /* OnBoardingKit in Frameworks */ = {isa = PBXBuildFile; productRef = 3766B4C22DFAD65B00AC6FA9 /* OnBoardingKit */; };
 		3770EEFC2AE3E6100079E36E /* FlowStacks in Frameworks */ = {isa = PBXBuildFile; productRef = 3770EEFB2AE3E6100079E36E /* FlowStacks */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		37ED6DE52AE3E42B00D162EE /* BlurFace.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "BlurFace.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		37ED6DE52AE3E42B00D162EE /* BlurFace.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BlurFace.app; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
 		3766B4872DF96BAD00AC6FA9 /* Core */ = {isa = PBXFileSystemSynchronizedRootGroup; explicitFileTypes = {}; explicitFolders = (); path = Core; sourceTree = "<group>"; };
-		3766B4912DF96BAD00AC6FA9 /* BlurFace */ = {isa = PBXFileSystemSynchronizedRootGroup; explicitFileTypes = {}; explicitFolders = (); path = "BlurFace"; sourceTree = "<group>"; };
+		3766B4912DF96BAD00AC6FA9 /* BlurFace */ = {isa = PBXFileSystemSynchronizedRootGroup; explicitFileTypes = {}; explicitFolders = (); path = BlurFace; sourceTree = "<group>"; };
 /* End PBXFileSystemSynchronizedRootGroup section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -26,6 +27,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3766B4C32DFAD65B00AC6FA9 /* OnBoardingKit in Frameworks */,
 				3766B4822DF969C400AC6FA9 /* SharedFoundation in Frameworks */,
 				3766B4852DF96AA700AC6FA9 /* SharedSwiftUI in Frameworks */,
 				3770EEFC2AE3E6100079E36E /* FlowStacks in Frameworks */,
@@ -55,9 +57,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-			37ED6DE42AE3E42B00D162EE /* BlurFace */ = {
-		isa = PBXNativeTarget;
-		buildConfigurationList = 37ED6E092AE3E42C00D162EE /* Build configuration list for PBXNativeTarget "BlurFace" */;
+		37ED6DE42AE3E42B00D162EE /* BlurFace */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 37ED6E092AE3E42C00D162EE /* Build configuration list for PBXNativeTarget "BlurFace" */;
 			buildPhases = (
 				37ED6DE12AE3E42B00D162EE /* Sources */,
 				37ED6DE22AE3E42B00D162EE /* Frameworks */,
@@ -67,18 +69,19 @@
 			);
 			dependencies = (
 			);
-					fileSystemSynchronizedGroups = (
-			3766B4872DF96BAD00AC6FA9 /* Core */,
-			3766B4912DF96BAD00AC6FA9 /* BlurFace */,
-		);
-					name = "BlurFace";
-		packageProductDependencies = (
-			3770EEFB2AE3E6100079E36E /* FlowStacks */,
-			3766B4812DF969C400AC6FA9 /* SharedFoundation */,
-			3766B4842DF96AA700AC6FA9 /* SharedSwiftUI */,
-		);
-		productName = "BlurFace";
-		productReference = 37ED6DE52AE3E42B00D162EE /* BlurFace.app */;
+			fileSystemSynchronizedGroups = (
+				3766B4872DF96BAD00AC6FA9 /* Core */,
+				3766B4912DF96BAD00AC6FA9 /* BlurFace */,
+			);
+			name = BlurFace;
+			packageProductDependencies = (
+				3770EEFB2AE3E6100079E36E /* FlowStacks */,
+				3766B4812DF969C400AC6FA9 /* SharedFoundation */,
+				3766B4842DF96AA700AC6FA9 /* SharedSwiftUI */,
+				3766B4C22DFAD65B00AC6FA9 /* OnBoardingKit */,
+			);
+			productName = BlurFace;
+			productReference = 37ED6DE52AE3E42B00D162EE /* BlurFace.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -109,13 +112,14 @@
 				3770EEFA2AE3E6100079E36E /* XCRemoteSwiftPackageReference "FlowStacks" */,
 				3766B4802DF969C400AC6FA9 /* XCRemoteSwiftPackageReference "SharedFoundation" */,
 				3766B4832DF96AA700AC6FA9 /* XCRemoteSwiftPackageReference "SharedSwiftUI" */,
+				3766B4C12DFAD3F100AC6FA9 /* XCRemoteSwiftPackageReference "OnBoardingKit" */,
 			);
 			productRefGroup = 37ED6DE62AE3E42B00D162EE /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
-					targets = (
-			37ED6DE42AE3E42B00D162EE /* BlurFace */,
-		);
+			targets = (
+				37ED6DE42AE3E42B00D162EE /* BlurFace */,
+			);
 		};
 /* End PBXProject section */
 
@@ -280,7 +284,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "ArkadiuszBanas.BlurFace";
+				PRODUCT_BUNDLE_IDENTIFIER = ArkadiuszBanas.BlurFace;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
@@ -309,7 +313,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "ArkadiuszBanas.BlurFace";
+				PRODUCT_BUNDLE_IDENTIFIER = ArkadiuszBanas.BlurFace;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
@@ -320,16 +324,16 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-			37ED6DE02AE3E42B00D162EE /* Build configuration list for PBXProject "BlurFace" */ = {
-		isa = XCConfigurationList;
-		buildConfigurations = (
-			37ED6E072AE3E42C00D162EE /* Debug */,
-			37ED6E082AE3E42C00D162EE /* Release */,
-		);
-		defaultConfigurationIsVisible = 0;
-		defaultConfigurationName = Release;
-	};
-	37ED6E092AE3E42C00D162EE /* Build configuration list for PBXNativeTarget "BlurFace" */ = {
+		37ED6DE02AE3E42B00D162EE /* Build configuration list for PBXProject "BlurFace" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				37ED6E072AE3E42C00D162EE /* Debug */,
+				37ED6E082AE3E42C00D162EE /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		37ED6E092AE3E42C00D162EE /* Build configuration list for PBXNativeTarget "BlurFace" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				37ED6E0A2AE3E42C00D162EE /* Debug */,
@@ -357,6 +361,14 @@
 				kind = branch;
 			};
 		};
+		3766B4C12DFAD3F100AC6FA9 /* XCRemoteSwiftPackageReference "OnBoardingKit" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/mlbonniec/OnBoardingKit";
+			requirement = {
+				kind = exactVersion;
+				version = 1.1.3;
+			};
+		};
 		3770EEFA2AE3E6100079E36E /* XCRemoteSwiftPackageReference "FlowStacks" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/johnpatrickmorgan/FlowStacks.git";
@@ -377,6 +389,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 3766B4832DF96AA700AC6FA9 /* XCRemoteSwiftPackageReference "SharedSwiftUI" */;
 			productName = SharedSwiftUI;
+		};
+		3766B4C22DFAD65B00AC6FA9 /* OnBoardingKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 3766B4C12DFAD3F100AC6FA9 /* XCRemoteSwiftPackageReference "OnBoardingKit" */;
+			productName = OnBoardingKit;
 		};
 		3770EEFB2AE3E6100079E36E /* FlowStacks */ = {
 			isa = XCSwiftPackageProductDependency;
