@@ -29,7 +29,7 @@ import RevenueCat
             shouldShowPaywall = !isProSubscriber
         } catch {
             print("Error checking subscription status: \(error)")
-            shouldShowPaywall = true
+            shouldShowPaywall = false
         }
         
         isLoading = false

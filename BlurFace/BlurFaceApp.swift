@@ -34,6 +34,11 @@ struct BlurFaceApp: App {
                 )
                 .sheet(isPresented: shouldShowPaywallBinding) {
                     PaywallView()
+                        .onRestoreCompleted { _ in
+                            Task {
+                                await subscriptionViewModel.checkSubscriptionStatus()
+                            }
+                        }
                 }
                 .onFirstTask() {
                     // Check subscription status on app launch
