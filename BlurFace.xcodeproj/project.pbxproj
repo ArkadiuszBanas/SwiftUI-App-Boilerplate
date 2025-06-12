@@ -13,12 +13,12 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		37ED6DE52AE3E42B00D162EE /* SwiftUI-App-Boilerplate.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "SwiftUI-App-Boilerplate.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		37ED6DE52AE3E42B00D162EE /* BlurFace.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "BlurFace.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
 		3766B4872DF96BAD00AC6FA9 /* Core */ = {isa = PBXFileSystemSynchronizedRootGroup; explicitFileTypes = {}; explicitFolders = (); path = Core; sourceTree = "<group>"; };
-		3766B4912DF96BAD00AC6FA9 /* SwiftUI-App-Boilerplate */ = {isa = PBXFileSystemSynchronizedRootGroup; explicitFileTypes = {}; explicitFolders = (); path = "SwiftUI-App-Boilerplate"; sourceTree = "<group>"; };
+		3766B4912DF96BAD00AC6FA9 /* BlurFace */ = {isa = PBXFileSystemSynchronizedRootGroup; explicitFileTypes = {}; explicitFolders = (); path = "BlurFace"; sourceTree = "<group>"; };
 /* End PBXFileSystemSynchronizedRootGroup section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -40,14 +40,14 @@
 			children = (
 				37ED6DE62AE3E42B00D162EE /* Products */,
 				3766B4872DF96BAD00AC6FA9 /* Core */,
-				3766B4912DF96BAD00AC6FA9 /* SwiftUI-App-Boilerplate */,
+				3766B4912DF96BAD00AC6FA9 /* BlurFace */,
 			);
 			sourceTree = "<group>";
 		};
 		37ED6DE62AE3E42B00D162EE /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				37ED6DE52AE3E42B00D162EE /* SwiftUI-App-Boilerplate.app */,
+				37ED6DE52AE3E42B00D162EE /* BlurFace.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -55,9 +55,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		37ED6DE42AE3E42B00D162EE /* SwiftUI-App-Boilerplate */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 37ED6E092AE3E42C00D162EE /* Build configuration list for PBXNativeTarget "SwiftUI-App-Boilerplate" */;
+			37ED6DE42AE3E42B00D162EE /* BlurFace */ = {
+		isa = PBXNativeTarget;
+		buildConfigurationList = 37ED6E092AE3E42C00D162EE /* Build configuration list for PBXNativeTarget "BlurFace" */;
 			buildPhases = (
 				37ED6DE12AE3E42B00D162EE /* Sources */,
 				37ED6DE22AE3E42B00D162EE /* Frameworks */,
@@ -67,18 +67,18 @@
 			);
 			dependencies = (
 			);
-			fileSystemSynchronizedGroups = (
-				3766B4872DF96BAD00AC6FA9 /* Core */,
-				3766B4912DF96BAD00AC6FA9 /* SwiftUI-App-Boilerplate */,
-			);
-			name = "SwiftUI-App-Boilerplate";
-			packageProductDependencies = (
-				3770EEFB2AE3E6100079E36E /* FlowStacks */,
-				3766B4812DF969C400AC6FA9 /* SharedFoundation */,
-				3766B4842DF96AA700AC6FA9 /* SharedSwiftUI */,
-			);
-			productName = "SwiftUI-App-Boilerplate";
-			productReference = 37ED6DE52AE3E42B00D162EE /* SwiftUI-App-Boilerplate.app */;
+					fileSystemSynchronizedGroups = (
+			3766B4872DF96BAD00AC6FA9 /* Core */,
+			3766B4912DF96BAD00AC6FA9 /* BlurFace */,
+		);
+					name = "BlurFace";
+		packageProductDependencies = (
+			3770EEFB2AE3E6100079E36E /* FlowStacks */,
+			3766B4812DF969C400AC6FA9 /* SharedFoundation */,
+			3766B4842DF96AA700AC6FA9 /* SharedSwiftUI */,
+		);
+		productName = "BlurFace";
+		productReference = 37ED6DE52AE3E42B00D162EE /* BlurFace.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -96,7 +96,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 37ED6DE02AE3E42B00D162EE /* Build configuration list for PBXProject "SwiftUI-App-Boilerplate" */;
+			buildConfigurationList = 37ED6DE02AE3E42B00D162EE /* Build configuration list for PBXProject "BlurFace" */;
 			compatibilityVersion = "Xcode 14.0";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -113,9 +113,9 @@
 			productRefGroup = 37ED6DE62AE3E42B00D162EE /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
-			targets = (
-				37ED6DE42AE3E42B00D162EE /* SwiftUI-App-Boilerplate */,
-			);
+					targets = (
+			37ED6DE42AE3E42B00D162EE /* BlurFace */,
+		);
 		};
 /* End PBXProject section */
 
@@ -266,7 +266,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_ASSET_PATHS = "\"SwiftUI-App-Boilerplate/Preview Content\"";
+				DEVELOPMENT_ASSET_PATHS = "\"BlurFace/Preview Content\"";
 				DEVELOPMENT_TEAM = NRDZ7MZXX5;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
@@ -280,7 +280,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "ArkadiuszBanas.SwiftUI-App-Boilerplate";
+				PRODUCT_BUNDLE_IDENTIFIER = "ArkadiuszBanas.BlurFace";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
@@ -295,7 +295,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_ASSET_PATHS = "\"SwiftUI-App-Boilerplate/Preview Content\"";
+				DEVELOPMENT_ASSET_PATHS = "\"BlurFace/Preview Content\"";
 				DEVELOPMENT_TEAM = NRDZ7MZXX5;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
@@ -309,7 +309,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "ArkadiuszBanas.SwiftUI-App-Boilerplate";
+				PRODUCT_BUNDLE_IDENTIFIER = "ArkadiuszBanas.BlurFace";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
@@ -320,16 +320,16 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		37ED6DE02AE3E42B00D162EE /* Build configuration list for PBXProject "SwiftUI-App-Boilerplate" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				37ED6E072AE3E42C00D162EE /* Debug */,
-				37ED6E082AE3E42C00D162EE /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		37ED6E092AE3E42C00D162EE /* Build configuration list for PBXNativeTarget "SwiftUI-App-Boilerplate" */ = {
+			37ED6DE02AE3E42B00D162EE /* Build configuration list for PBXProject "BlurFace" */ = {
+		isa = XCConfigurationList;
+		buildConfigurations = (
+			37ED6E072AE3E42C00D162EE /* Debug */,
+			37ED6E082AE3E42C00D162EE /* Release */,
+		);
+		defaultConfigurationIsVisible = 0;
+		defaultConfigurationName = Release;
+	};
+	37ED6E092AE3E42C00D162EE /* Build configuration list for PBXNativeTarget "BlurFace" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				37ED6E0A2AE3E42C00D162EE /* Debug */,

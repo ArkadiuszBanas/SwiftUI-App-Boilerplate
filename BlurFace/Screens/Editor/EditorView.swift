@@ -1,6 +1,6 @@
 //
 //  EditorView.swift
-//  SwiftUI-App-Boilerplate
+//  BlurFace
 //
 //  Created by Arek on 21/10/2023.
 //
