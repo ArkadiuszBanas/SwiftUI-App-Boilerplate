@@ -6,18 +6,40 @@
 //
 
 import SwiftUI
+import SharedSwiftUI
 import RevenueCat
+import RevenueCatUI
 import OnBoardingKit
 
 @main
 struct BlurFaceApp: App {
 
     @UIApplicationDelegateAdaptor(AppDelegate.self) var appDelegate
+    @State private var subscriptionViewModel = SubscriptionViewModel()
+
+    // TODO: REFACTOR getting this information. It's hardcoded in OnBoardingKit
+    @AppStorage("hasOnBoardingBeenPresented") private var hasOnboardingBeenPresented: Bool = false
 
     var body: some Scene {
+
+        let shouldShowPaywallBinding = Binding<Bool>(
+            get: { subscriptionViewModel.shouldShowPaywall && hasOnboardingBeenPresented },
+            set: { subscriptionViewModel.shouldShowPaywall = $0 }
+        )
+
         WindowGroup {
             AppCoordinator()
-                .presentOnBoarding(BlurFaceOnboarding())
+                .presentOnBoarding(
+                    BlurFaceOnboarding()
+                )
+                .sheet(isPresented: shouldShowPaywallBinding) {
+                    PaywallView()
+                }
+                .onFirstTask() {
+                    // Check subscription status on app launch
+                    // This handles the case when onboarding wasn't presented
+                    await subscriptionViewModel.checkSubscriptionStatus()
+                }
         }
     }
 }
