@@ -9,7 +9,6 @@ import SwiftUI
 import SharedSwiftUI
 import RevenueCat
 import RevenueCatUI
-import OnBoardingKit
 
 @main
 struct BlurFaceApp: App {
