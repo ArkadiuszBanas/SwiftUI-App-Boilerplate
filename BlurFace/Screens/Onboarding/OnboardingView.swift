@@ -27,6 +27,14 @@ extension Step {
                 title: "Just tap Add Blur",
                 image: UIImage(named: "onboarding-1")!,
                 showToolbar: true
+            ),
+            .init(
+                title: "Move and resize blur area",
+                image: UIImage(named: "onboarding-1")!
+            ),
+            .init(
+                title: "Share or save ready photo!",
+                image: UIImage(named: "onboarding-2")!
             )
         ]
     }
@@ -55,6 +63,7 @@ struct OnboardingView: View {
         Image(uiImage: currentStep.image)
             .resizable()
             .aspectRatio(contentMode: .fill)
+            .animation(.default, value: currentStep)
             .frame(
                 maxWidth: UIScreen.main.bounds.width,
                 maxHeight: UIScreen.main.bounds.height
