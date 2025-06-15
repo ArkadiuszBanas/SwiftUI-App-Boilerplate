@@ -75,7 +75,7 @@ struct BottomToolbar: View {
 
         BottomToolbar(
             selectedPhoto: .constant(nil),
-            selectedImage: nil,
+            selectedImage: UIImage(named: "test"),
             onAddShape: {},
             onExport: {}
         )
