@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import SharedFoundation
 import SharedSwiftUI
 
 struct Step: Equatable {
@@ -44,6 +45,8 @@ struct OnboardingView: View {
 
     @State var currentStep: Step = Step.makeSteps()[0]
     @State private var steps: [Step] = Step.makeSteps()
+
+    let onEnd: VoidClosure
 
     var body: some View {
         ZStack {
@@ -128,7 +131,7 @@ struct OnboardingView: View {
 
     private func goToNextStep() {
         if steps.isEmpty {
-            // Close onboarding
+            onEnd()
         } else {
             currentStep = steps[0]
             steps.removeFirst()
@@ -137,5 +140,5 @@ struct OnboardingView: View {
 }
 
 #Preview {
-    OnboardingView()
+    OnboardingView(onEnd: {})
 }

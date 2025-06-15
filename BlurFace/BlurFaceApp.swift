@@ -17,22 +17,22 @@ struct BlurFaceApp: App {
     @UIApplicationDelegateAdaptor(AppDelegate.self) var appDelegate
     @State private var subscriptionViewModel = SubscriptionViewModel()
 
-    // TODO: REFACTOR getting this information. It's hardcoded in OnBoardingKit
-    @AppStorage("hasOnBoardingBeenPresented") private var hasOnboardingBeenPresented: Bool = false
+    @AppStorage("shouldShowOnboarding") var shouldShowOnboarding: Bool = true
 
     var body: some Scene {
 
         let shouldShowPaywallBinding = Binding<Bool>(
-            get: { subscriptionViewModel.shouldShowPaywall && hasOnboardingBeenPresented },
+            get: { subscriptionViewModel.shouldShowPaywall && (shouldShowOnboarding == false) },
             set: { subscriptionViewModel.shouldShowPaywall = $0 }
         )
 
         WindowGroup {
-//            AppCoordinator()
-            OnboardingView()
-                .presentOnBoarding(
-                    BlurFaceOnboarding()
-                )
+            AppCoordinator()
+                .fullScreenCover(isPresented: $shouldShowOnboarding) {
+                    OnboardingView() {
+                        shouldShowOnboarding = false
+                    }
+                }
                 .sheet(isPresented: shouldShowPaywallBinding) {
                     PaywallView()
                         .onRestoreCompleted { _ in
