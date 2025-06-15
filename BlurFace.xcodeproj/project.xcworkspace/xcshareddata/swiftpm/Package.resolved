@@ -1,5 +1,5 @@
 {
-  "originHash" : "59c7b7c5f27ad4a986b4620312efc0304436e895713ffbfb51b95e63b21bd2dd",
+  "originHash" : "70b46fd1ccb810883301715655ff56132e54b75301dcb82ee95ea60d5ff91af7",
   "pins" : [
     {
       "identity" : "flowstacks",
@@ -8,15 +8,6 @@
       "state" : {
         "revision" : "0c5414b018fac906ffce9c4aee7da2a599615c95",
         "version" : "0.3.4"
-      }
-    },
-    {
-      "identity" : "onboardingkit",
-      "kind" : "remoteSourceControl",
-      "location" : "https://github.com/mlbonniec/OnBoardingKit",
-      "state" : {
-        "revision" : "41896a8c704d174091cb44536b96138620b13ec9",
-        "version" : "1.1.3"
       }
     },
     {
