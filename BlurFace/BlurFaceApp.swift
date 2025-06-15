@@ -28,7 +28,8 @@ struct BlurFaceApp: App {
         )
 
         WindowGroup {
-            AppCoordinator()
+//            AppCoordinator()
+            OnboardingView()
                 .presentOnBoarding(
                     BlurFaceOnboarding()
                 )

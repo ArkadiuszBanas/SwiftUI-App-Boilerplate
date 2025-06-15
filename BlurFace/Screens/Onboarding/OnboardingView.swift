@@ -36,8 +36,6 @@ struct OnboardingView: View {
 
     @State var currentStep: Step = Step.makeSteps()[0]
     @State private var steps: [Step] = Step.makeSteps()
-    @State private var circlePosition = CGPoint(x: 0.5, y: 0.5)
-    @State private var circleSize: CGFloat = 100
 
     var body: some View {
         ZStack {
@@ -46,19 +44,6 @@ struct OnboardingView: View {
             textContainer
             bottomToolbar
                 .opacity(currentStep.showToolbar ? 1 : 0)
-
-            // Blur circle
-            if currentStep.showToolbar {
-                Circle()
-                    .fill(.ultraThinMaterial)
-                    .frame(width: circleSize, height: circleSize)
-                    .position(
-                        x: UIScreen.main.bounds.width * circlePosition.x,
-                        y: UIScreen.main.bounds.height * circlePosition.y
-                    )
-                    .animation(.spring(), value: circlePosition)
-                    .animation(.spring(), value: circleSize)
-            }
         }
         .animation(.default, value: currentStep)
         .onLoad {
