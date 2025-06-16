@@ -108,6 +108,7 @@ struct BlurredImageView: View {
 
 // MARK: - Resize Handle View
 struct ResizeHandleView: View {
+
     enum HandlePosition {
         case top, bottom, leading, trailing
     }
@@ -137,7 +138,7 @@ struct ResizeHandleView: View {
     
     var body: some View {
         Image(systemName: "plus.circle.fill")
-            .font(.system(size: 16))
+            .font(.system(size: 20))
             .foregroundColor(.white)
             .background(Circle().fill(Color.black.opacity(0.3)))
             .position(x: handlePosition.x, y: handlePosition.y)

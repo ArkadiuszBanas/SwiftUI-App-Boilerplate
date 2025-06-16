@@ -110,7 +110,7 @@ struct EditableCircle: Identifiable, Equatable {
     func updateCircleSize(_ circle: EditableCircle, width: CGFloat, height: CGFloat) {
         guard let index = circles.firstIndex(of: circle) else { return }
         // Ensure minimum size constraints
-        let minSize: CGFloat = 30
+        let minSize: CGFloat = 20
         circles[index].width = max(minSize, width)
         circles[index].height = max(minSize, height)
     }
