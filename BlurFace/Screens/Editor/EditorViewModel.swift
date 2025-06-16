@@ -260,5 +260,12 @@ struct EditableCircle: Identifiable, Equatable {
         guard let cgImage = context.createCGImage(croppedImage, from: cropRect) else { return nil }
         
         return UIImage(cgImage: cgImage, scale: image.scale, orientation: image.imageOrientation)
+    
+    // MARK: - Memory Cleanup
+    func cleanupExportedImage() {
+        logMemoryUsage("Before Cleanup")
+        exportedImage = nil
+        logMemoryUsage("After Cleanup")
+    }
     }
 } 
