@@ -191,7 +191,9 @@ struct EditableCircle: Identifiable, Equatable {
             }
 
             let imageSize = originalImage.size
-            let renderer = UIGraphicsImageRenderer(size: imageSize)
+            let format = UIGraphicsImageRendererFormat.default()
+            format.scale = originalImage.scale
+            let renderer = UIGraphicsImageRenderer(size: imageSize, format: format)
             
             return renderer.image { context in
             let cgContext = context.cgContext
