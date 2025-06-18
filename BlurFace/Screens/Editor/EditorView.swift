@@ -170,8 +170,8 @@ struct ResizeHandleView: View {
                         dragOffset = .zero
                     }
             )
-            .accessibilityLabel("Resize handle")
-            .accessibilityHint("Drag to resize the blur ellipse")
+            .accessibilityLabel(NSLocalizedString("editor.resize_handle_label", comment: ""))
+            .accessibilityHint(NSLocalizedString("editor.resize_handle_hint", comment: ""))
     }
 }
 
@@ -314,8 +314,8 @@ struct MovableCircleView: View {
                         onRemove(circle)
                     }
                 }
-                .accessibilityLabel("Blur ellipse")
-                .accessibilityHint("Tap to select, drag to move when selected, double tap to remove")
+                .accessibilityLabel(NSLocalizedString("editor.blur_ellipse_label", comment: ""))
+                .accessibilityHint(NSLocalizedString("editor.blur_ellipse_hint", comment: ""))
             
             // Resize handles (only show when selected)
             if isSelected {
@@ -455,10 +455,10 @@ struct EditorView: View {
                     Image(systemName: "photo.badge.plus")
                         .font(.system(size: 60))
                         .foregroundColor(.gray)
-                    Text("No image selected")
+                    Text(NSLocalizedString("editor.no_image_selected", comment: ""))
                         .font(.headline)
                         .foregroundColor(.secondary)
-                    Text("Tap 'Load Photo' to get started")
+                    Text(NSLocalizedString("editor.load_photo_instruction", comment: ""))
                         .font(.subheadline)
                         .foregroundColor(.secondary)
                 }

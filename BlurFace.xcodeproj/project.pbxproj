@@ -21,6 +21,7 @@
 /* Begin PBXFileSystemSynchronizedRootGroup section */
 		3766B4872DF96BAD00AC6FA9 /* Core */ = {isa = PBXFileSystemSynchronizedRootGroup; explicitFileTypes = {}; explicitFolders = (); path = Core; sourceTree = "<group>"; };
 		3766B4912DF96BAD00AC6FA9 /* BlurFace */ = {isa = PBXFileSystemSynchronizedRootGroup; explicitFileTypes = {}; explicitFolders = (); path = BlurFace; sourceTree = "<group>"; };
+		37BD39FE2E03591A00BD2D41 /* Resources */ = {isa = PBXFileSystemSynchronizedRootGroup; explicitFileTypes = {}; explicitFolders = (); path = Resources; sourceTree = "<group>"; };
 /* End PBXFileSystemSynchronizedRootGroup section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -44,6 +45,7 @@
 			children = (
 				37ED6DE62AE3E42B00D162EE /* Products */,
 				3766B4872DF96BAD00AC6FA9 /* Core */,
+				37BD39FE2E03591A00BD2D41 /* Resources */,
 				3766B4912DF96BAD00AC6FA9 /* BlurFace */,
 			);
 			sourceTree = "<group>";
@@ -74,6 +76,7 @@
 			fileSystemSynchronizedGroups = (
 				3766B4872DF96BAD00AC6FA9 /* Core */,
 				3766B4912DF96BAD00AC6FA9 /* BlurFace */,
+				37BD39FE2E03591A00BD2D41 /* Resources */,
 			);
 			name = "Blur Face";
 			packageProductDependencies = (
