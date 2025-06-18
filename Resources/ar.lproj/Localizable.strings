@@ -1,0 +1,67 @@
+/* 
+  Localizable.strings
+  BlurFace
+
+  Created by Arek on 18/06/2025.
+  
+*/
+
+// MARK: - Editor View
+/* Main message shown when no image is selected in the editor */
+"editor.no_image_selected" = "لم يتم اختيار صورة";
+
+/* Instruction text shown below the no image message */
+"editor.load_photo_instruction" = "اضغط على 'تحميل صورة' للبدء";
+
+/* Accessibility label for resize handles on blur ellipses */
+"editor.resize_handle_label" = "مقبض تغيير الحجم";
+
+/* Accessibility hint explaining how to use resize handles */
+"editor.resize_handle_hint" = "اسحب لتغيير حجم بيضاوي التمويه";
+
+/* Accessibility label for blur ellipse shapes */
+"editor.blur_ellipse_label" = "بيضاوي التمويه";
+
+/* Accessibility hint explaining blur ellipse interactions */
+"editor.blur_ellipse_hint" = "اضغط للاختيار، اسحب للنقل عند الاختيار، اضغط مرتين للحذف";
+
+// MARK: - Onboarding
+/* First onboarding step title explaining the app's main purpose */
+"onboarding.step1_title" = "مويه الوجوه ببضع نقرات فقط";
+
+/* Second onboarding step title showing how to add blur */
+"onboarding.step2_title" = "فقط اضغط على إضافة تمويه";
+
+/* Third onboarding step title explaining blur manipulation */
+"onboarding.step3_title" = "انقل وغيّر حجم منطقة التمويه";
+
+/* Fourth onboarding step title about sharing results */
+"onboarding.step4_title" = "شارك أو احفظ الصورة الجاهزة!";
+
+// MARK: - Bottom Toolbar
+/* Button label for loading photos from gallery */
+"toolbar.load_photo" = "تحميل صورة";
+
+/* Accessibility hint for photo loading button */
+"toolbar.load_photo_hint" = "يفتح معرض الصور لاختيار صورة";
+
+/* Button label for adding blur shapes */
+"toolbar.add_blur" = "إضافة تمويه";
+
+/* Accessibility hint for add blur button */
+"toolbar.add_blur_hint" = "يضيف بيضاوي متحرك لتمويه مناطق من الصورة";
+
+/* Label shown during image export process */
+"toolbar.exporting" = "جاري التصدير";
+
+/* Accessibility hint for export progress indicator */
+"toolbar.exporting_hint" = "جاري معالجة الصورة حالياً";
+
+/* Button label for exporting/sharing images */
+"toolbar.export" = "تصدير";
+
+/* Accessibility hint for export button */
+"toolbar.export_hint" = "يحفظ الصورة المعدلة في مكتبة الصور";
+
+/* Accessibility label for export button */
+"toolbar.export_label" = "تصدير الصورة";
