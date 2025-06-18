@@ -1,0 +1,67 @@
+/* 
+  Localizable.strings
+  BlurFace
+
+  Created by Arek on 18/06/2025.
+  
+*/
+
+// MARK: - Editor View
+/* Main message shown when no image is selected in the editor */
+"editor.no_image_selected" = "Ingen bilde valgt";
+
+/* Instruction text shown below the no image message */
+"editor.load_photo_instruction" = "Trykk 'Last inn bilde' for å begynne";
+
+/* Accessibility label for resize handles on blur ellipses */
+"editor.resize_handle_label" = "Størrelseshåndtak";
+
+/* Accessibility hint explaining how to use resize handles */
+"editor.resize_handle_hint" = "Dra for å endre størrelse på uskarphet-ellipsen";
+
+/* Accessibility label for blur ellipse shapes */
+"editor.blur_ellipse_label" = "Uskarphet-ellipse";
+
+/* Accessibility hint explaining blur ellipse interactions */
+"editor.blur_ellipse_hint" = "Trykk for å velge, dra for å flytte når valgt, dobbelttrykk for å fjerne";
+
+// MARK: - Onboarding
+/* First onboarding step title explaining the app's main purpose */
+"onboarding.step1_title" = "Gjør ansikter uskarpe med bare noen trykk";
+
+/* Second onboarding step title showing how to add blur */
+"onboarding.step2_title" = "Bare trykk Legg til uskarphet";
+
+/* Third onboarding step title explaining blur manipulation */
+"onboarding.step3_title" = "Flytt og endre størrelse på uskarphet-området";
+
+/* Fourth onboarding step title about sharing results */
+"onboarding.step4_title" = "Del eller lagre det ferdige bildet!";
+
+// MARK: - Bottom Toolbar
+/* Button label for loading photos from gallery */
+"toolbar.load_photo" = "Last inn bilde";
+
+/* Accessibility hint for photo loading button */
+"toolbar.load_photo_hint" = "Åpner bildegalleri for å velge et bilde";
+
+/* Button label for adding blur shapes */
+"toolbar.add_blur" = "Legg til uskarphet";
+
+/* Accessibility hint for add blur button */
+"toolbar.add_blur_hint" = "Legger til en flyttbar ellipse for å gjøre områder av bildet uskarpe";
+
+/* Label shown during image export process */
+"toolbar.exporting" = "Eksporterer";
+
+/* Accessibility hint for export progress indicator */
+"toolbar.exporting_hint" = "Bildet behandles for øyeblikket";
+
+/* Button label for exporting/sharing images */
+"toolbar.export" = "Eksporter";
+
+/* Accessibility hint for export button */
+"toolbar.export_hint" = "Lagrer det redigerte bildet i bildegalleri";
+
+/* Accessibility label for export button */
+"toolbar.export_label" = "Eksporter bilde";
