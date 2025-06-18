@@ -1,0 +1,67 @@
+/* 
+  Localizable.strings
+  BlurFace
+
+  Created by Arek on 18/06/2025.
+  
+*/
+
+// MARK: - Editor View
+/* Main message shown when no image is selected in the editor */
+"editor.no_image_selected" = "선택된 이미지가 없습니다";
+
+/* Instruction text shown below the no image message */
+"editor.load_photo_instruction" = "'사진 불러오기'를 눌러 시작하세요";
+
+/* Accessibility label for resize handles on blur ellipses */
+"editor.resize_handle_label" = "크기 조절 핸들";
+
+/* Accessibility hint explaining how to use resize handles */
+"editor.resize_handle_hint" = "드래그하여 블러 타원 크기 조절";
+
+/* Accessibility label for blur ellipse shapes */
+"editor.blur_ellipse_label" = "블러 타원";
+
+/* Accessibility hint explaining blur ellipse interactions */
+"editor.blur_ellipse_hint" = "탭하여 선택, 선택시 드래그하여 이동, 더블탭하여 삭제";
+
+// MARK: - Onboarding
+/* First onboarding step title explaining the app's main purpose */
+"onboarding.step1_title" = "몇 번의 탭으로 얼굴 블러 처리";
+
+/* Second onboarding step title showing how to add blur */
+"onboarding.step2_title" = "블러 추가를 탭하기만 하세요";
+
+/* Third onboarding step title explaining blur manipulation */
+"onboarding.step3_title" = "블러 영역 이동 및 크기 조절";
+
+/* Fourth onboarding step title about sharing results */
+"onboarding.step4_title" = "완성된 사진을 공유하거나 저장하세요!";
+
+// MARK: - Bottom Toolbar
+/* Button label for loading photos from gallery */
+"toolbar.load_photo" = "사진 불러오기";
+
+/* Accessibility hint for photo loading button */
+"toolbar.load_photo_hint" = "포토 갤러리를 열어 이미지 선택";
+
+/* Button label for adding blur shapes */
+"toolbar.add_blur" = "블러 추가";
+
+/* Accessibility hint for add blur button */
+"toolbar.add_blur_hint" = "이미지 영역을 블러 처리할 이동 가능한 타원 추가";
+
+/* Label shown during image export process */
+"toolbar.exporting" = "내보내는 중";
+
+/* Accessibility hint for export progress indicator */
+"toolbar.exporting_hint" = "이미지가 현재 처리 중입니다";
+
+/* Button label for exporting/sharing images */
+"toolbar.export" = "내보내기";
+
+/* Accessibility hint for export button */
+"toolbar.export_hint" = "편집된 이미지를 포토 라이브러리에 저장";
+
+/* Accessibility label for export button */
+"toolbar.export_label" = "이미지 내보내기";

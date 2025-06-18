@@ -1,0 +1,67 @@
+/* 
+  Localizable.strings
+  BlurFace
+
+  Created by Arek on 18/06/2025.
+  
+*/
+
+// MARK: - Editor View
+/* Main message shown when no image is selected in the editor */
+"editor.no_image_selected" = "No image selected";
+
+/* Instruction text shown below the no image message */
+"editor.load_photo_instruction" = "Tap 'Load Photo' to get started";
+
+/* Accessibility label for resize handles on blur ellipses */
+"editor.resize_handle_label" = "Resize handle";
+
+/* Accessibility hint explaining how to use resize handles */
+"editor.resize_handle_hint" = "Drag to resize the blur ellipse";
+
+/* Accessibility label for blur ellipse shapes */
+"editor.blur_ellipse_label" = "Blur ellipse";
+
+/* Accessibility hint explaining blur ellipse interactions */
+"editor.blur_ellipse_hint" = "Tap to select, drag to move when selected, double tap to remove";
+
+// MARK: - Onboarding
+/* First onboarding step title explaining the app's main purpose */
+"onboarding.step1_title" = "Blur faces with just few taps";
+
+/* Second onboarding step title showing how to add blur */
+"onboarding.step2_title" = "Just tap Add Blur";
+
+/* Third onboarding step title explaining blur manipulation */
+"onboarding.step3_title" = "Move and resize blur area";
+
+/* Fourth onboarding step title about sharing results */
+"onboarding.step4_title" = "Share or save ready photo!";
+
+// MARK: - Bottom Toolbar
+/* Button label for loading photos from gallery */
+"toolbar.load_photo" = "Load Photo";
+
+/* Accessibility hint for photo loading button */
+"toolbar.load_photo_hint" = "Opens photo gallery to select an image";
+
+/* Button label for adding blur shapes */
+"toolbar.add_blur" = "Add Blur";
+
+/* Accessibility hint for add blur button */
+"toolbar.add_blur_hint" = "Adds a movable ellipse to blur areas of the image";
+
+/* Label shown during image export process */
+"toolbar.exporting" = "Exporting";
+
+/* Accessibility hint for export progress indicator */
+"toolbar.exporting_hint" = "Image is currently being processed";
+
+/* Button label for exporting/sharing images */
+"toolbar.export" = "Export";
+
+/* Accessibility hint for export button */
+"toolbar.export_hint" = "Saves the edited image to your photo library";
+
+/* Accessibility label for export button */
+"toolbar.export_label" = "Export Image";

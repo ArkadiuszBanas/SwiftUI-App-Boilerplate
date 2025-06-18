@@ -15,14 +15,14 @@ struct BottomToolbar: View {
                 VStack(spacing: 4) {
                     Image(systemName: "photo")
                         .font(.system(size: 24))
-                    Text("Load Photo")
+                    Text(NSLocalizedString("toolbar.load_photo", comment: ""))
                         .font(.caption)
                 }
                 .frame(maxWidth: .infinity)
                 .padding(.vertical, 12)
             }
-            .accessibilityLabel("Load Photo")
-            .accessibilityHint("Opens photo gallery to select an image")
+            .accessibilityLabel(NSLocalizedString("toolbar.load_photo", comment: ""))
+            .accessibilityHint(NSLocalizedString("toolbar.load_photo_hint", comment: ""))
             
             if selectedImage != nil {
                 // Add Shape
@@ -32,14 +32,14 @@ struct BottomToolbar: View {
                     VStack(spacing: 4) {
                         Image(systemName: "drop")
                             .font(.system(size: 24))
-                        Text("Add Blur")
+                        Text(NSLocalizedString("toolbar.add_blur", comment: ""))
                             .font(.caption)
                     }
                     .frame(maxWidth: .infinity)
                     .padding(.vertical, 12)
                 }
-                .accessibilityLabel("Add Blur")
-                .accessibilityHint("Adds a movable ellipse to blur areas of the image")
+                .accessibilityLabel(NSLocalizedString("toolbar.add_blur", comment: ""))
+                .accessibilityHint(NSLocalizedString("toolbar.add_blur_hint", comment: ""))
                 
                 // Export
                 if isExporting {
@@ -47,13 +47,13 @@ struct BottomToolbar: View {
                         ProgressView()
                             .tint(.gray)
                             .scaleEffect(1.2)
-                        Text("Exporting")
+                        Text(NSLocalizedString("toolbar.exporting", comment: ""))
                             .font(.caption)
                     }
                     .frame(maxWidth: .infinity)
                     .padding(.vertical, 12)
-                    .accessibilityLabel("Exporting Image")
-                    .accessibilityHint("Image is currently being processed")
+                    .accessibilityLabel(NSLocalizedString("toolbar.export_label", comment: ""))
+                    .accessibilityHint(NSLocalizedString("toolbar.exporting_hint", comment: ""))
                 } else {
                     Button {
                         onExport()
@@ -61,14 +61,14 @@ struct BottomToolbar: View {
                         VStack(spacing: 4) {
                             Image(systemName: "square.and.arrow.up")
                                 .font(.system(size: 24))
-                            Text("Export")
+                            Text(NSLocalizedString("toolbar.export", comment: ""))
                                 .font(.caption)
                         }
                         .frame(maxWidth: .infinity)
                         .padding(.vertical, 12)
                     }
-                    .accessibilityLabel("Export Image")
-                    .accessibilityHint("Saves the edited image to your photo library")
+                    .accessibilityLabel(NSLocalizedString("toolbar.export_label", comment: ""))
+                    .accessibilityHint(NSLocalizedString("toolbar.export_hint", comment: ""))
                 }
             }
         }

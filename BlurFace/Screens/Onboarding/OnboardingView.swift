@@ -21,20 +21,20 @@ extension Step {
     static func makeSteps() -> [Step] {
         [
             .init(
-                title: "Blur faces with just few taps",
+                title: NSLocalizedString("onboarding.step1_title", comment: ""),
                 image: UIImage(named: "onboarding-1")!
             ),
             .init(
-                title: "Just tap Add Blur",
+                title: NSLocalizedString("onboarding.step2_title", comment: ""),
                 image: UIImage(named: "onboarding-1")!,
                 showToolbar: true
             ),
             .init(
-                title: "Move and resize blur area",
+                title: NSLocalizedString("onboarding.step3_title", comment: ""),
                 image: UIImage(named: "onboarding-1")!
             ),
             .init(
-                title: "Share or save ready photo!",
+                title: NSLocalizedString("onboarding.step4_title", comment: ""),
                 image: UIImage(named: "onboarding-2")!
             )
         ]

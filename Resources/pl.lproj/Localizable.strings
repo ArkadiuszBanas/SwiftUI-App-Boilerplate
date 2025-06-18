@@ -1,0 +1,67 @@
+/* 
+  Localizable.strings
+  BlurFace
+
+  Created by Arek on 18/06/2025.
+  
+*/
+
+// MARK: - Editor View
+/* Main message shown when no image is selected in the editor */
+"editor.no_image_selected" = "Nie wybrano zdjęcia";
+
+/* Instruction text shown below the no image message */
+"editor.load_photo_instruction" = "Dotknij 'Wczytaj zdjęcie', aby rozpocząć";
+
+/* Accessibility label for resize handles on blur ellipses */
+"editor.resize_handle_label" = "Uchwyt zmiany rozmiaru";
+
+/* Accessibility hint explaining how to use resize handles */
+"editor.resize_handle_hint" = "Przeciągnij, aby zmienić rozmiar elipsy rozmycia";
+
+/* Accessibility label for blur ellipse shapes */
+"editor.blur_ellipse_label" = "Elipsa rozmycia";
+
+/* Accessibility hint explaining blur ellipse interactions */
+"editor.blur_ellipse_hint" = "Dotknij, aby wybrać, przeciągnij, aby przesunąć po wybraniu, podwójnie dotknij, aby usunąć";
+
+// MARK: - Onboarding
+/* First onboarding step title explaining the app's main purpose */
+"onboarding.step1_title" = "Rozmyj twarze za pomocą kilku dotknięć";
+
+/* Second onboarding step title showing how to add blur */
+"onboarding.step2_title" = "Po prostu dotknij Dodaj rozmycie";
+
+/* Third onboarding step title explaining blur manipulation */
+"onboarding.step3_title" = "Przesuń i zmień rozmiar obszaru rozmycia";
+
+/* Fourth onboarding step title about sharing results */
+"onboarding.step4_title" = "Udostępnij lub zapisz gotowe zdjęcie!";
+
+// MARK: - Bottom Toolbar
+/* Button label for loading photos from gallery */
+"toolbar.load_photo" = "Wczytaj zdjęcie";
+
+/* Accessibility hint for photo loading button */
+"toolbar.load_photo_hint" = "Otwiera galerię zdjęć, aby wybrać obraz";
+
+/* Button label for adding blur shapes */
+"toolbar.add_blur" = "Dodaj rozmycie";
+
+/* Accessibility hint for add blur button */
+"toolbar.add_blur_hint" = "Dodaje ruchomą elipsę do rozmywania obszarów obrazu";
+
+/* Label shown during image export process */
+"toolbar.exporting" = "Eksportowanie";
+
+/* Accessibility hint for export progress indicator */
+"toolbar.exporting_hint" = "Obraz jest aktualnie przetwarzany";
+
+/* Button label for exporting/sharing images */
+"toolbar.export" = "Eksportuj";
+
+/* Accessibility hint for export button */
+"toolbar.export_hint" = "Zapisuje edytowany obraz do biblioteki zdjęć";
+
+/* Accessibility label for export button */
+"toolbar.export_label" = "Eksportuj obraz";

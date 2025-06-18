@@ -1,0 +1,67 @@
+/* 
+  Localizable.strings
+  BlurFace
+
+  Created by Arek on 18/06/2025.
+  
+*/
+
+// MARK: - Editor View
+/* Main message shown when no image is selected in the editor */
+"editor.no_image_selected" = "Kein Bild ausgewählt";
+
+/* Instruction text shown below the no image message */
+"editor.load_photo_instruction" = "Tippen Sie auf 'Foto laden', um zu beginnen";
+
+/* Accessibility label for resize handles on blur ellipses */
+"editor.resize_handle_label" = "Größengriff";
+
+/* Accessibility hint explaining how to use resize handles */
+"editor.resize_handle_hint" = "Ziehen Sie, um die Größe der Unschärfe-Ellipse zu ändern";
+
+/* Accessibility label for blur ellipse shapes */
+"editor.blur_ellipse_label" = "Unschärfe-Ellipse";
+
+/* Accessibility hint explaining blur ellipse interactions */
+"editor.blur_ellipse_hint" = "Tippen zum Auswählen, ziehen zum Bewegen wenn ausgewählt, doppelt tippen zum Entfernen";
+
+// MARK: - Onboarding
+/* First onboarding step title explaining the app's main purpose */
+"onboarding.step1_title" = "Gesichter mit nur wenigen Berührungen unscharf machen";
+
+/* Second onboarding step title showing how to add blur */
+"onboarding.step2_title" = "Einfach auf Unschärfe hinzufügen tippen";
+
+/* Third onboarding step title explaining blur manipulation */
+"onboarding.step3_title" = "Unschärfebereich bewegen und Größe ändern";
+
+/* Fourth onboarding step title about sharing results */
+"onboarding.step4_title" = "Fertiges Foto teilen oder speichern!";
+
+// MARK: - Bottom Toolbar
+/* Button label for loading photos from gallery */
+"toolbar.load_photo" = "Foto laden";
+
+/* Accessibility hint for photo loading button */
+"toolbar.load_photo_hint" = "Öffnet die Fotogalerie zur Bildauswahl";
+
+/* Button label for adding blur shapes */
+"toolbar.add_blur" = "Unschärfe hinzufügen";
+
+/* Accessibility hint for add blur button */
+"toolbar.add_blur_hint" = "Fügt eine bewegliche Ellipse zum Unschärfen von Bildbereichen hinzu";
+
+/* Label shown during image export process */
+"toolbar.exporting" = "Exportiere";
+
+/* Accessibility hint for export progress indicator */
+"toolbar.exporting_hint" = "Das Bild wird gerade verarbeitet";
+
+/* Button label for exporting/sharing images */
+"toolbar.export" = "Exportieren";
+
+/* Accessibility hint for export button */
+"toolbar.export_hint" = "Speichert das bearbeitete Bild in Ihre Fotobibliothek";
+
+/* Accessibility label for export button */
+"toolbar.export_label" = "Bild exportieren";

@@ -1,0 +1,67 @@
+/* 
+  Localizable.strings
+  BlurFace
+
+  Created by Arek on 18/06/2025.
+  
+*/
+
+// MARK: - Editor View
+/* Main message shown when no image is selected in the editor */
+"editor.no_image_selected" = "Ninguna imagen seleccionada";
+
+/* Instruction text shown below the no image message */
+"editor.load_photo_instruction" = "Toca 'Cargar Foto' para comenzar";
+
+/* Accessibility label for resize handles on blur ellipses */
+"editor.resize_handle_label" = "Control de redimensionado";
+
+/* Accessibility hint explaining how to use resize handles */
+"editor.resize_handle_hint" = "Arrastra para redimensionar la elipse de desenfoque";
+
+/* Accessibility label for blur ellipse shapes */
+"editor.blur_ellipse_label" = "Elipse de desenfoque";
+
+/* Accessibility hint explaining blur ellipse interactions */
+"editor.blur_ellipse_hint" = "Toca para seleccionar, arrastra para mover cuando esté seleccionado, toca dos veces para eliminar";
+
+// MARK: - Onboarding
+/* First onboarding step title explaining the app's main purpose */
+"onboarding.step1_title" = "Desenfocar rostros con solo unos toques";
+
+/* Second onboarding step title showing how to add blur */
+"onboarding.step2_title" = "Solo toca Añadir Desenfoque";
+
+/* Third onboarding step title explaining blur manipulation */
+"onboarding.step3_title" = "Mueve y redimensiona el área de desenfoque";
+
+/* Fourth onboarding step title about sharing results */
+"onboarding.step4_title" = "¡Comparte o guarda la foto lista!";
+
+// MARK: - Bottom Toolbar
+/* Button label for loading photos from gallery */
+"toolbar.load_photo" = "Cargar Foto";
+
+/* Accessibility hint for photo loading button */
+"toolbar.load_photo_hint" = "Abre la galería de fotos para seleccionar una imagen";
+
+/* Button label for adding blur shapes */
+"toolbar.add_blur" = "Añadir Desenfoque";
+
+/* Accessibility hint for add blur button */
+"toolbar.add_blur_hint" = "Añade una elipse movible para desenfocar áreas de la imagen";
+
+/* Label shown during image export process */
+"toolbar.exporting" = "Exportando";
+
+/* Accessibility hint for export progress indicator */
+"toolbar.exporting_hint" = "La imagen se está procesando actualmente";
+
+/* Button label for exporting/sharing images */
+"toolbar.export" = "Exportar";
+
+/* Accessibility hint for export button */
+"toolbar.export_hint" = "Guarda la imagen editada en tu biblioteca de fotos";
+
+/* Accessibility label for export button */
+"toolbar.export_label" = "Exportar Imagen";

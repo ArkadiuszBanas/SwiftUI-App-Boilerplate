@@ -1,0 +1,67 @@
+/* 
+  Localizable.strings
+  BlurFace
+
+  Created by Arek on 18/06/2025.
+  
+*/
+
+// MARK: - Editor View
+/* Main message shown when no image is selected in the editor */
+"editor.no_image_selected" = "画像が選択されていません";
+
+/* Instruction text shown below the no image message */
+"editor.load_photo_instruction" = "「写真を読み込む」をタップして開始";
+
+/* Accessibility label for resize handles on blur ellipses */
+"editor.resize_handle_label" = "サイズ変更ハンドル";
+
+/* Accessibility hint explaining how to use resize handles */
+"editor.resize_handle_hint" = "ドラッグしてブラー楕円のサイズを変更";
+
+/* Accessibility label for blur ellipse shapes */
+"editor.blur_ellipse_label" = "ブラー楕円";
+
+/* Accessibility hint explaining blur ellipse interactions */
+"editor.blur_ellipse_hint" = "タップして選択、選択時にドラッグして移動、ダブルタップで削除";
+
+// MARK: - Onboarding
+/* First onboarding step title explaining the app's main purpose */
+"onboarding.step1_title" = "わずか数タップで顔をぼかす";
+
+/* Second onboarding step title showing how to add blur */
+"onboarding.step2_title" = "「ブラーを追加」をタップするだけ";
+
+/* Third onboarding step title explaining blur manipulation */
+"onboarding.step3_title" = "ブラー領域を移動・サイズ変更";
+
+/* Fourth onboarding step title about sharing results */
+"onboarding.step4_title" = "完成した写真を共有・保存！";
+
+// MARK: - Bottom Toolbar
+/* Button label for loading photos from gallery */
+"toolbar.load_photo" = "写真を読み込む";
+
+/* Accessibility hint for photo loading button */
+"toolbar.load_photo_hint" = "フォトギャラリーを開いて画像を選択";
+
+/* Button label for adding blur shapes */
+"toolbar.add_blur" = "ブラーを追加";
+
+/* Accessibility hint for add blur button */
+"toolbar.add_blur_hint" = "画像の領域をぼかすための移動可能な楕円を追加";
+
+/* Label shown during image export process */
+"toolbar.exporting" = "エクスポート中";
+
+/* Accessibility hint for export progress indicator */
+"toolbar.exporting_hint" = "画像を現在処理中です";
+
+/* Button label for exporting/sharing images */
+"toolbar.export" = "エクスポート";
+
+/* Accessibility hint for export button */
+"toolbar.export_hint" = "編集した画像をフォトライブラリに保存";
+
+/* Accessibility label for export button */
+"toolbar.export_label" = "画像をエクスポート";
