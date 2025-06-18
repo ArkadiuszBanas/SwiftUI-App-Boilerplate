@@ -163,8 +163,11 @@ struct EditableCircle: Identifiable, Equatable {
         Task {
             print("Exporting image...")
             
+            // Resize image if longest side exceeds 2048px
+            let imageToProcess = await resizeImageIfNeeded(selectedImage, maxSize: 5000)
+
             // Render the final image with blur effects on background thread
-            let processedImage = await renderImageWithBlur(selectedImage)
+            let processedImage = await renderImageWithBlur(imageToProcess)
             
             await MainActor.run {
                 if let processedImage = processedImage {
@@ -259,6 +262,31 @@ struct EditableCircle: Identifiable, Equatable {
                 // Restore graphics state
                 cgContext.restoreGState()
             }
+            }
+        }.value
+    }
+    
+    private func resizeImageIfNeeded(_ image: UIImage, maxSize: CGFloat) async -> UIImage {
+        return await Task.detached {
+            let currentSize = image.size
+            let longestSide = max(currentSize.width, currentSize.height)
+            
+            // If longest side is already within limit, return original
+            guard longestSide > maxSize else { return image }
+            
+            // Calculate scale factor to fit within maxSize
+            let scaleFactor = maxSize / longestSide
+            let newSize = CGSize(
+                width: currentSize.width * scaleFactor,
+                height: currentSize.height * scaleFactor
+            )
+            
+            // Create resized image
+            let format = UIGraphicsImageRendererFormat.default()
+            format.scale = image.scale
+            let renderer = UIGraphicsImageRenderer(size: newSize, format: format)
+            return renderer.image { _ in
+                image.draw(in: CGRect(origin: .zero, size: newSize))
             }
         }.value
     }
