@@ -113,6 +113,7 @@
 				en,
 				Base,
 				pl,
+				de,
 			);
 			mainGroup = 37ED6DDC2AE3E42B00D162EE;
 			packageReferences = (
