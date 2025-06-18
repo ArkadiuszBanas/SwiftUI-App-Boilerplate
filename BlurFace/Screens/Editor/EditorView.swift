@@ -472,6 +472,7 @@ struct EditorView: View {
                 BottomToolbar(
                     selectedPhoto: $viewModel.selectedPhoto,
                     selectedImage: viewModel.selectedImage,
+                    isExporting: viewModel.isExporting,
                     onAddShape: viewModel.addShape,
                     onExport: {
                         Task {

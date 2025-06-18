@@ -37,6 +37,7 @@ struct EditableCircle: Identifiable, Equatable {
     // MARK: - Export Management
     var showShareSheet = false
     var exportedImage: UIImage?
+    var isExporting = false
 
     let storeManager: StoreManager
     var showPaywall = false
@@ -136,52 +137,70 @@ struct EditableCircle: Identifiable, Equatable {
     }
     
     func onTapExportImage() async {
+        isExporting = true
+        
         let isPro = try? await storeManager.isProEnabled()
 
         if isPro ?? true {
             export()
         } else {
+            isExporting = false
             showPaywall = true
         }
     }
 
     func onHidePaywall() {
+        isExporting = true
         export()
     }
 
     private func export() {
-        guard let selectedImage else { return }
-        print("Exporting image...")
-
-        // Render the final image with blur effects
-        if let processedImage = renderImageWithBlur(selectedImage) {
-            exportedImage = processedImage
-            showShareSheet = true
+        guard let selectedImage else { 
+            isExporting = false
+            return 
+        }
+        
+        Task {
+            print("Exporting image...")
+            
+            // Render the final image with blur effects on background thread
+            let processedImage = await renderImageWithBlur(selectedImage)
+            
+            await MainActor.run {
+                if let processedImage = processedImage {
+                    exportedImage = processedImage
+                    showShareSheet = true
+                }
+                isExporting = false
+            }
         }
     }
 
-    private func renderImageWithBlur(_ originalImage: UIImage) -> UIImage? {
+    private func renderImageWithBlur(_ originalImage: UIImage) async -> UIImage? {
         guard !circles.isEmpty else {
             // If no circles, return original image
             return originalImage
         }
         
-        // First, create a blurred version of the entire image
-        guard let blurredImage = createBlurredImage(originalImage) else {
-            return originalImage
-        }
+        return await Task.detached { [weak self] in
+            guard let self = self else { return originalImage }
+            
+            // First, create a blurred version of the entire image
+            guard let blurredImage = self.createBlurredImage(originalImage) else {
+                return originalImage
+            }
 
-        let imageSize = originalImage.size
-        let renderer = UIGraphicsImageRenderer(size: imageSize)
-        
-        return renderer.image { context in
+            let imageSize = originalImage.size
+            let renderer = UIGraphicsImageRenderer(size: imageSize)
+            
+            return renderer.image { context in
             let cgContext = context.cgContext
             
             // Draw the original image as base
             originalImage.draw(at: .zero)
             
             // For each circle, draw the blurred version in that area
-            for circle in circles {
+            for circle in self.circles {
                 // Calculate circle position in image coordinates
                 let centerX = circle.position.x * imageSize.width
                 let centerY = circle.position.y * imageSize.height
@@ -238,7 +257,8 @@ struct EditableCircle: Identifiable, Equatable {
                 // Restore graphics state
                 cgContext.restoreGState()
             }
-        }
+            }
+        }.value
     }
     
     private func createBlurredImage(_ image: UIImage) -> UIImage? {
@@ -260,12 +280,10 @@ struct EditableCircle: Identifiable, Equatable {
         guard let cgImage = context.createCGImage(croppedImage, from: cropRect) else { return nil }
         
         return UIImage(cgImage: cgImage, scale: image.scale, orientation: image.imageOrientation)
-    
+    }
+
     // MARK: - Memory Cleanup
     func cleanupExportedImage() {
-        logMemoryUsage("Before Cleanup")
         exportedImage = nil
-        logMemoryUsage("After Cleanup")
     }
-    }
-} 
+}

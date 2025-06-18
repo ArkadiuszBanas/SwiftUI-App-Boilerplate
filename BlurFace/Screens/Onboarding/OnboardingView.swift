@@ -121,6 +121,7 @@ struct OnboardingView: View {
         BottomToolbar(
             selectedPhoto: .constant(nil),
             selectedImage: UIImage(named: "test"),
+            isExporting: false,
             onAddShape: {},
             onExport: {}
         )
