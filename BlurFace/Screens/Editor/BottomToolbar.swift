@@ -4,6 +4,7 @@ import PhotosUI
 struct BottomToolbar: View {
     @Binding var selectedPhoto: PhotosPickerItem?
     let selectedImage: UIImage?
+    let isExporting: Bool
     let onAddShape: () -> Void
     let onExport: () -> Void
     
@@ -41,20 +42,34 @@ struct BottomToolbar: View {
                 .accessibilityHint("Adds a movable ellipse to blur areas of the image")
                 
                 // Export
-                Button {
-                    onExport()
-                } label: {
+                if isExporting {
                     VStack(spacing: 4) {
-                        Image(systemName: "square.and.arrow.up")
-                            .font(.system(size: 24))
-                        Text("Export")
+                        ProgressView()
+                            .tint(.gray)
+                            .scaleEffect(1.2)
+                        Text("Exporting")
                             .font(.caption)
                     }
                     .frame(maxWidth: .infinity)
                     .padding(.vertical, 12)
+                    .accessibilityLabel("Exporting Image")
+                    .accessibilityHint("Image is currently being processed")
+                } else {
+                    Button {
+                        onExport()
+                    } label: {
+                        VStack(spacing: 4) {
+                            Image(systemName: "square.and.arrow.up")
+                                .font(.system(size: 24))
+                            Text("Export")
+                                .font(.caption)
+                        }
+                        .frame(maxWidth: .infinity)
+                        .padding(.vertical, 12)
+                    }
+                    .accessibilityLabel("Export Image")
+                    .accessibilityHint("Saves the edited image to your photo library")
                 }
-                .accessibilityLabel("Export Image")
-                .accessibilityHint("Saves the edited image to your photo library")
             }
         }
         .foregroundColor(.gray)
@@ -76,6 +91,7 @@ struct BottomToolbar: View {
         BottomToolbar(
             selectedPhoto: .constant(nil),
             selectedImage: UIImage(named: "test"),
+            isExporting: false,
             onAddShape: {},
             onExport: {}
         )

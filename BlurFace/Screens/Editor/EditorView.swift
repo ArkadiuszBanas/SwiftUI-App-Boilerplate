@@ -472,6 +472,7 @@ struct EditorView: View {
                 BottomToolbar(
                     selectedPhoto: $viewModel.selectedPhoto,
                     selectedImage: viewModel.selectedImage,
+                    isExporting: viewModel.isExporting,
                     onAddShape: viewModel.addShape,
                     onExport: {
                         Task {
@@ -486,7 +487,10 @@ struct EditorView: View {
                 await viewModel.loadImage()
             }
         }
-        .sheet(isPresented: $viewModel.showShareSheet) {
+        .sheet(isPresented: $viewModel.showShareSheet, onDismiss: {
+            // Clean up exported image when share sheet is dismissed to free memory
+            viewModel.cleanupExportedImage()
+        }) {
             if let exportedImage = viewModel.exportedImage {
                 ShareSheet(activityItems: [exportedImage])
             }
@@ -503,12 +507,26 @@ struct EditorView: View {
 // MARK: - Share Sheet
 struct ShareSheet: UIViewControllerRepresentable {
     let activityItems: [Any]
+    var onCompletion: ((UIActivity.ActivityType?, Bool) -> Void)? = nil
     
     func makeUIViewController(context: Context) -> UIActivityViewController {
         let activityViewController = UIActivityViewController(
             activityItems: activityItems,
             applicationActivities: nil
         )
+        
+        // Configure completion handler
+        activityViewController.completionWithItemsHandler = { activityType, completed, returnedItems, error in
+            onCompletion?(activityType, completed)
+        }
+        
+        // Exclude activities that might cause memory issues on older devices
+        activityViewController.excludedActivityTypes = [
+            .addToReadingList,
+            .assignToContact,
+            .print,
+            .openInIBooks
+        ]
         
         return activityViewController
     }

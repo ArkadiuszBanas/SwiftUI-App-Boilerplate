@@ -37,6 +37,7 @@ struct EditableCircle: Identifiable, Equatable {
     // MARK: - Export Management
     var showShareSheet = false
     var exportedImage: UIImage?
+    var isExporting = false
 
     let storeManager: StoreManager
     var showPaywall = false
@@ -136,52 +137,75 @@ struct EditableCircle: Identifiable, Equatable {
     }
     
     func onTapExportImage() async {
+        isExporting = true
+        
         let isPro = try? await storeManager.isProEnabled()
 
         if isPro ?? true {
             export()
         } else {
+            isExporting = false
             showPaywall = true
         }
     }
 
     func onHidePaywall() {
+        isExporting = true
         export()
     }
 
     private func export() {
-        guard let selectedImage else { return }
-        print("Exporting image...")
+        guard let selectedImage else { 
+            isExporting = false
+            return 
+        }
+        
+        Task {
+            print("Exporting image...")
+            
+            // Resize image if longest side exceeds 2048px
+            let imageToProcess = await resizeImageIfNeeded(selectedImage, maxSize: 5000)
 
-        // Render the final image with blur effects
-        if let processedImage = renderImageWithBlur(selectedImage) {
-            exportedImage = processedImage
-            showShareSheet = true
+            // Render the final image with blur effects on background thread
+            let processedImage = await renderImageWithBlur(imageToProcess)
+            
+            await MainActor.run {
+                if let processedImage = processedImage {
+                    exportedImage = processedImage
+                    showShareSheet = true
+                }
+                isExporting = false
+            }
         }
     }
 
-    private func renderImageWithBlur(_ originalImage: UIImage) -> UIImage? {
+    private func renderImageWithBlur(_ originalImage: UIImage) async -> UIImage? {
         guard !circles.isEmpty else {
             // If no circles, return original image
             return originalImage
         }
         
-        // First, create a blurred version of the entire image
-        guard let blurredImage = createBlurredImage(originalImage) else {
-            return originalImage
-        }
+        return await Task.detached { [weak self] in
+            guard let self = self else { return originalImage }
+            
+            // First, create a blurred version of the entire image
+            guard let blurredImage = self.createBlurredImage(originalImage) else {
+                return originalImage
+            }
 
-        let imageSize = originalImage.size
-        let renderer = UIGraphicsImageRenderer(size: imageSize)
-        
-        return renderer.image { context in
+            let imageSize = originalImage.size
+            let format = UIGraphicsImageRendererFormat.default()
+            format.scale = originalImage.scale
+            let renderer = UIGraphicsImageRenderer(size: imageSize, format: format)
+            
+            return renderer.image { context in
             let cgContext = context.cgContext
             
             // Draw the original image as base
             originalImage.draw(at: .zero)
             
             // For each circle, draw the blurred version in that area
-            for circle in circles {
+            for circle in self.circles {
                 // Calculate circle position in image coordinates
                 let centerX = circle.position.x * imageSize.width
                 let centerY = circle.position.y * imageSize.height
@@ -238,7 +262,33 @@ struct EditableCircle: Identifiable, Equatable {
                 // Restore graphics state
                 cgContext.restoreGState()
             }
-        }
+            }
+        }.value
+    }
+    
+    private func resizeImageIfNeeded(_ image: UIImage, maxSize: CGFloat) async -> UIImage {
+        return await Task.detached {
+            let currentSize = image.size
+            let longestSide = max(currentSize.width, currentSize.height)
+            
+            // If longest side is already within limit, return original
+            guard longestSide > maxSize else { return image }
+            
+            // Calculate scale factor to fit within maxSize
+            let scaleFactor = maxSize / longestSide
+            let newSize = CGSize(
+                width: currentSize.width * scaleFactor,
+                height: currentSize.height * scaleFactor
+            )
+            
+            // Create resized image
+            let format = UIGraphicsImageRendererFormat.default()
+            format.scale = image.scale
+            let renderer = UIGraphicsImageRenderer(size: newSize, format: format)
+            return renderer.image { _ in
+                image.draw(in: CGRect(origin: .zero, size: newSize))
+            }
+        }.value
     }
     
     private func createBlurredImage(_ image: UIImage) -> UIImage? {
@@ -261,4 +311,9 @@ struct EditableCircle: Identifiable, Equatable {
         
         return UIImage(cgImage: cgImage, scale: image.scale, orientation: image.imageOrientation)
     }
-} 
+
+    // MARK: - Memory Cleanup
+    func cleanupExportedImage() {
+        exportedImage = nil
+    }
+}
