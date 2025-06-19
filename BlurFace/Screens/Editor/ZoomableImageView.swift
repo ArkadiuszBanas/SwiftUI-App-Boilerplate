@@ -14,6 +14,7 @@ struct ZoomableImageView: View {
     let onReset: () -> Void
     
     @State private var lastOffset: CGSize = .zero
+    @State private var initialScale: CGFloat = 1.0
     
     private func calculateMinScale(for size: CGSize) -> CGFloat {
         let imageAspect = image.size.width / image.size.height
@@ -42,17 +43,24 @@ struct ZoomableImageView: View {
                     SimultaneousGesture(
                         MagnificationGesture()
                             .onChanged { value in
-                                let newScale = max(minScale, min(value, 4.0))
+                                // Calculate the new scale based on the initial scale when gesture started
+                                let newScale = max(minScale, min(initialScale * value, 4.0))
+                                
                                 if newScale < scale {
                                     // If zooming out and below min scale, reset
                                     withAnimation(.spring()) {
                                         scale = 1.0
                                         offset = .zero
                                         lastOffset = .zero
+                                        initialScale = 1.0
                                     }
                                 } else {
                                     scale = newScale
                                 }
+                            }
+                            .onEnded { _ in
+                                // Update initialScale to current scale for next gesture
+                                initialScale = scale
                             },
                         DragGesture()
                             .onChanged { value in
@@ -83,6 +91,7 @@ struct ZoomableImageView: View {
                     withAnimation(.spring()) {
                         onReset()
                         lastOffset = .zero
+                        initialScale = 1.0
                     }
                 }
                 .accessibilityLabel("Selected Photo")
