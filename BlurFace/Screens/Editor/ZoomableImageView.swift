@@ -42,7 +42,7 @@ struct ZoomableImageView: View {
                     SimultaneousGesture(
                         MagnificationGesture()
                             .onChanged { value in
-                                let newScale = max(minScale, min(value, 2.0))
+                                let newScale = max(minScale, min(value, 4.0))
                                 if newScale < scale {
                                     // If zooming out and below min scale, reset
                                     withAnimation(.spring()) {
