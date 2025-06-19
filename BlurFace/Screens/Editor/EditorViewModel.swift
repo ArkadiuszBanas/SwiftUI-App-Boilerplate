@@ -116,6 +116,77 @@ struct EditableCircle: Identifiable, Equatable {
         circles[index].height = max(minSize, height)
     }
     
+    func updateCircleSizeAndPosition(_ circle: EditableCircle, width: CGFloat, height: CGFloat, handlePosition: ResizeHandleView.HandlePosition, imageSize: CGSize, imageScale: CGFloat, containerSize: CGSize) {
+        guard let index = circles.firstIndex(of: circle) else { return }
+        
+        // Ensure minimum size constraints
+        let minSize: CGFloat = 20
+        let newWidth = max(minSize, width)
+        let newHeight = max(minSize, height)
+        
+        // Calculate the change in size (in display coordinates)
+        let widthChange = newWidth - circle.width
+        let heightChange = newHeight - circle.height
+        
+        // Calculate the displayed image size using the actual container size
+        // This uses the same logic as in MovableCircleView's position calculations
+        let imageAspectRatio = imageSize.width / imageSize.height
+        let containerAspectRatio = containerSize.width / containerSize.height
+        
+        let displayedImageSize: CGSize
+        if imageAspectRatio > containerAspectRatio {
+            // Image is constrained by width
+            displayedImageSize = CGSize(
+                width: containerSize.width,
+                height: containerSize.width / imageAspectRatio
+            )
+        } else {
+            // Image is constrained by height
+            displayedImageSize = CGSize(
+                width: containerSize.height * imageAspectRatio,
+                height: containerSize.height
+            )
+        }
+        
+        // widthChange and heightChange are already scale-corrected from ResizeHandleView
+        // so we should divide by the base displayed image size, not the scaled one
+        let normalizedWidthChange = widthChange / displayedImageSize.width
+        let normalizedHeightChange = heightChange / displayedImageSize.height
+        
+        // Calculate position adjustment based on handle position
+        var positionAdjustment = CGPoint.zero
+        
+        switch handlePosition {
+        case .top:
+            // When dragging top handle, bottom should stay fixed
+            // So center moves up by half the height change
+            positionAdjustment.y = -normalizedHeightChange / 2
+        case .bottom:
+            // When dragging bottom handle, top should stay fixed
+            // So center moves down by half the height change
+            positionAdjustment.y = normalizedHeightChange / 2
+        case .leading:
+            // When dragging left handle, right should stay fixed
+            // So center moves left by half the width change
+            positionAdjustment.x = -normalizedWidthChange / 2
+        case .trailing:
+            // When dragging right handle, left should stay fixed
+            // So center moves right by half the width change
+            positionAdjustment.x = normalizedWidthChange / 2
+        }
+        
+        // Apply size changes
+        circles[index].width = newWidth
+        circles[index].height = newHeight
+        
+        // Apply position adjustment with bounds checking
+        let newPosition = CGPoint(
+            x: max(0, min(1, circle.position.x + positionAdjustment.x)),
+            y: max(0, min(1, circle.position.y + positionAdjustment.y))
+        )
+        circles[index].position = newPosition
+    }
+    
     func removeCircle(_ circle: EditableCircle) {
         circles.removeAll { $0.id == circle.id }
         if selectedCircleId == circle.id {

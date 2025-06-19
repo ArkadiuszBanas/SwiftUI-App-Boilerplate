@@ -119,7 +119,9 @@ struct ResizeHandleView: View {
     let height: CGFloat
     let circle: EditableCircle
     let imageScale: CGFloat
-    let onSizeChange: (EditableCircle, CGFloat, CGFloat) -> Void
+    let imageSize: CGSize
+    let containerSize: CGSize
+    let onSizeAndPositionChange: (EditableCircle, CGFloat, CGFloat, HandlePosition, CGSize, CGFloat, CGSize) -> Void
     
     @State private var dragOffset: CGSize = .zero
     
@@ -166,7 +168,7 @@ struct ResizeHandleView: View {
                             newWidth = circle.width + (translation.width / imageScale)
                         }
                         
-                        onSizeChange(circle, newWidth, newHeight)
+                        onSizeAndPositionChange(circle, newWidth, newHeight, position, imageSize, imageScale, containerSize)
                         dragOffset = .zero
                     }
             )
@@ -184,7 +186,7 @@ struct MovableCircleView: View {
     let containerSize: CGSize
     let isSelected: Bool
     let onPositionChange: (EditableCircle, CGPoint) -> Void
-    let onSizeChange: (EditableCircle, CGFloat, CGFloat) -> Void
+    let onSizeAndPositionChange: (EditableCircle, CGFloat, CGFloat, ResizeHandleView.HandlePosition, CGSize, CGFloat, CGSize) -> Void
     let onRemove: (EditableCircle) -> Void
     let onSelect: (EditableCircle) -> Void
     let onDeselect: () -> Void
@@ -326,7 +328,9 @@ struct MovableCircleView: View {
                     height: scaledHeight,
                     circle: circle,
                     imageScale: imageScale,
-                    onSizeChange: onSizeChange
+                    imageSize: imageSize,
+                    containerSize: containerSize,
+                    onSizeAndPositionChange: onSizeAndPositionChange
                 )
                 
                 ResizeHandleView(
@@ -336,7 +340,9 @@ struct MovableCircleView: View {
                     height: scaledHeight,
                     circle: circle,
                     imageScale: imageScale,
-                    onSizeChange: onSizeChange
+                    imageSize: imageSize,
+                    containerSize: containerSize,
+                    onSizeAndPositionChange: onSizeAndPositionChange
                 )
                 
                 ResizeHandleView(
@@ -346,7 +352,9 @@ struct MovableCircleView: View {
                     height: scaledHeight,
                     circle: circle,
                     imageScale: imageScale,
-                    onSizeChange: onSizeChange
+                    imageSize: imageSize,
+                    containerSize: containerSize,
+                    onSizeAndPositionChange: onSizeAndPositionChange
                 )
                 
                 ResizeHandleView(
@@ -356,7 +364,9 @@ struct MovableCircleView: View {
                     height: scaledHeight,
                     circle: circle,  
                     imageScale: imageScale,
-                    onSizeChange: onSizeChange
+                    imageSize: imageSize,
+                    containerSize: containerSize,
+                    onSizeAndPositionChange: onSizeAndPositionChange
                 )
             }
         }
@@ -371,7 +381,7 @@ struct CircleOverlayView: View {
     let imageOffset: CGSize
     let selectedCircleId: UUID?
     let onPositionChange: (EditableCircle, CGPoint) -> Void
-    let onSizeChange: (EditableCircle, CGFloat, CGFloat) -> Void
+    let onSizeAndPositionChange: (EditableCircle, CGFloat, CGFloat, ResizeHandleView.HandlePosition, CGSize, CGFloat, CGSize) -> Void
     let onRemove: (EditableCircle) -> Void
     let onSelect: (EditableCircle) -> Void
     let onDeselect: () -> Void
@@ -387,7 +397,9 @@ struct CircleOverlayView: View {
                     containerSize: geometry.size,
                     isSelected: selectedCircleId == circle.id,
                     onPositionChange: onPositionChange,
-                    onSizeChange: onSizeChange,
+                    onSizeAndPositionChange: { circle, width, height, position, imageSize, imageScale, _ in
+                        onSizeAndPositionChange(circle, width, height, position, imageSize, imageScale, geometry.size)
+                    },
                     onRemove: onRemove,
                     onSelect: onSelect,
                     onDeselect: onDeselect
@@ -437,7 +449,7 @@ struct EditorView: View {
                         imageOffset: viewModel.imageOffset,
                         selectedCircleId: viewModel.selectedCircleId,
                         onPositionChange: viewModel.updateCirclePosition,
-                        onSizeChange: viewModel.updateCircleSize,
+                        onSizeAndPositionChange: viewModel.updateCircleSizeAndPosition,
                         onRemove: viewModel.removeCircle,
                         onSelect: viewModel.selectCircle,
                         onDeselect: viewModel.deselectCircle
