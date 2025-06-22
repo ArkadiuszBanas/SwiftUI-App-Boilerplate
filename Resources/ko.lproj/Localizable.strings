@@ -65,3 +65,16 @@
 
 /* Accessibility label for export button */
 "toolbar.export_label" = "이미지 내보내기";
+
+// MARK: - Rating Request
+/* Title of the satisfaction alert dialog */
+"rating_satisfaction_title" = "BlurFace에 만족하시나요?";
+
+/* Message asking for user feedback in the satisfaction alert */
+"rating_satisfaction_message" = "앱 개선에 도움을 주세요!";
+
+/* Positive response button in satisfaction alert */
+"rating_satisfaction_yes" = "예";
+
+/* Negative response button in satisfaction alert */
+"rating_satisfaction_no" = "아니오";

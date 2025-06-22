@@ -40,10 +40,13 @@ struct EditableCircle: Identifiable, Equatable {
     var isExporting = false
 
     let storeManager: StoreManager
+    let ratingRequestManager: RatingRequestManager
     var showPaywall = false
 
-    init(storeManager: StoreManager = RevenueCatStoreManager()) {
+    init(storeManager: StoreManager = RevenueCatStoreManager(),
+         ratingRequestManager: RatingRequestManager = RatingRequestManager()) {
         self.storeManager = storeManager
+        self.ratingRequestManager = ratingRequestManager
     }
 
     func loadImage() async {
@@ -386,5 +389,11 @@ struct EditableCircle: Identifiable, Equatable {
     // MARK: - Memory Cleanup
     func cleanupExportedImage() {
         exportedImage = nil
+    }
+    
+    // MARK: - Rating Request
+    func handleSuccessfulExport() {
+        print("🚀 EditorViewModel: handleSuccessfulExport() called")
+        ratingRequestManager.recordExport()
     }
 }

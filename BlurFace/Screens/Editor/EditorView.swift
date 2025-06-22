@@ -504,7 +504,17 @@ struct EditorView: View {
             viewModel.cleanupExportedImage()
         }) {
             if let exportedImage = viewModel.exportedImage {
-                ShareSheet(activityItems: [exportedImage])
+                ShareSheet(
+                    activityItems: [exportedImage],
+                    onCompletion: { activityType, completed in
+                        print("📤 ShareSheet onCompletion called:")
+                        print("   Activity type: \(String(describing: activityType))")
+                        print("   Completed: \(completed)")
+                        if completed {
+                            viewModel.handleSuccessfulExport()
+                        }
+                    }
+                )
             }
         }
         .sheet(isPresented: $viewModel.showPaywall) {
