@@ -4,10 +4,10 @@ import StoreKit
 // MARK: - Rating Request Texts
 struct RatingRequestTexts {
 
-    let title: String
+        let title: String
     let message: String
     let yesButton: String
-    let noButton: String    
+    let noButton: String
 }
 
 @Observable final class RatingRequestManager {

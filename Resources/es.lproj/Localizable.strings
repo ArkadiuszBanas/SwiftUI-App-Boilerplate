@@ -65,3 +65,16 @@
 
 /* Accessibility label for export button */
 "toolbar.export_label" = "Exportar Imagen";
+
+// MARK: - Rating Request
+/* Title of the satisfaction alert dialog */
+"rating_satisfaction_title" = "¿Estás satisfecho con BlurFace?";
+
+/* Message asking for user feedback in the satisfaction alert */
+"rating_satisfaction_message" = "¡Ayúdanos a mejorar la aplicación!";
+
+/* Positive response button in satisfaction alert */
+"rating_satisfaction_yes" = "Sí";
+
+/* Negative response button in satisfaction alert */
+"rating_satisfaction_no" = "No";
