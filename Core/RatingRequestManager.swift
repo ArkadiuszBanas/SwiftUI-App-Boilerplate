@@ -1,6 +1,15 @@
 import SwiftUI
 import StoreKit
 
+// MARK: - Rating Request Texts
+struct RatingRequestTexts {
+
+    let title: String
+    let message: String
+    let yesButton: String
+    let noButton: String    
+}
+
 @Observable final class RatingRequestManager {
     
     // MARK: - UserDefaults Keys
@@ -13,9 +22,12 @@ import StoreKit
     
     // MARK: - Properties
     private let exportCountInterval: Int = 3
+    private let texts: RatingRequestTexts
     
     // MARK: - Initialization
-    init() {}
+    init(texts: RatingRequestTexts = .default) {
+        self.texts = texts
+    }
     
     // MARK: - Public Methods
     
@@ -85,14 +97,14 @@ import StoreKit
     /// Wyświetla alert z pytaniem o satysfakcję
     private func showSatisfactionAlert() {
         let alert = UIAlertController(
-            title: NSLocalizedString("rating_satisfaction_title", comment: "Czy jesteś zadowolony z aplikacji?"),
-            message: NSLocalizedString("rating_satisfaction_message", comment: "Pomóż nam ulepszyć aplikację!"),
+            title: texts.title,
+            message: texts.message,
             preferredStyle: .alert
         )
         
         // Opcja "Tak" - prowadzi do oceny w App Store
         let yesAction = UIAlertAction(
-            title: NSLocalizedString("rating_satisfaction_yes", comment: "Tak"),
+            title: texts.yesButton,
             style: .default
         ) { [weak self] _ in
             self?.requestAppStoreRating()
@@ -100,7 +112,7 @@ import StoreKit
         
         // Opcja "Nie" - zamyka alert
         let noAction = UIAlertAction(
-            title: NSLocalizedString("rating_satisfaction_no", comment: "Nie"),
+            title: texts.noButton,
             style: .cancel
         ) { [weak self] _ in
             self?.recordRatingRequestShown()
