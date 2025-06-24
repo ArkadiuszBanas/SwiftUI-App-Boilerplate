@@ -10,6 +10,8 @@ import FlowStacks
 
 struct AppCoordinator: View {
 
+    let storeManager: StoreManager
+
     enum Screen {
 
         case home

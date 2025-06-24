@@ -219,6 +219,7 @@ struct EditableCircle: Identifiable, Equatable {
             export()
         } else {
             isExporting = false
+            storeManager.setPaywallSource(.exportAttempt)
             showPaywall = true
         }
     }

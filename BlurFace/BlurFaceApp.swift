@@ -15,18 +15,28 @@ struct BlurFaceApp: App {
 
     @UIApplicationDelegateAdaptor(AppDelegate.self) var appDelegate
     @State private var subscriptionViewModel = SubscriptionViewModel()
+    @State private var storeManager: StoreManager = RevenueCatStoreManager()
 
     @AppStorage("shouldShowOnboarding") var shouldShowOnboarding: Bool = true
 
     var body: some Scene {
 
         let shouldShowPaywallBinding = Binding<Bool>(
-            get: { subscriptionViewModel.shouldShowPaywall && (shouldShowOnboarding == false) },
-            set: { subscriptionViewModel.shouldShowPaywall = $0 }
+            get: {
+                let shouldShow = subscriptionViewModel.shouldShowPaywall && (shouldShowOnboarding == false)
+                if shouldShow {
+                    // Set paywall source when showing paywall after onboarding
+                    storeManager.setPaywallSource(.afterOnboarding)
+                }
+                return shouldShow
+            },
+            set: {
+                subscriptionViewModel.shouldShowPaywall = $0 
+            }
         )
 
         WindowGroup {
-            AppCoordinator()
+            AppCoordinator(storeManager: storeManager)
                 .fullScreenCover(isPresented: $shouldShowOnboarding) {
                     OnboardingView() {
                         shouldShowOnboarding = false
