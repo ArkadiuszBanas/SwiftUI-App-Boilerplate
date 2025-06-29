@@ -11,7 +11,6 @@
 		3766B4852DF96AA700AC6FA9 /* SharedSwiftUI in Frameworks */ = {isa = PBXBuildFile; productRef = 3766B4842DF96AA700AC6FA9 /* SharedSwiftUI */; };
 		3766B4CB2DFB088E00AC6FA9 /* RevenueCat in Frameworks */ = {isa = PBXBuildFile; productRef = 3766B4CA2DFB088E00AC6FA9 /* RevenueCat */; };
 		3766B4CD2DFB088E00AC6FA9 /* RevenueCatUI in Frameworks */ = {isa = PBXBuildFile; productRef = 3766B4CC2DFB088E00AC6FA9 /* RevenueCatUI */; };
-		3770EEFC2AE3E6100079E36E /* FlowStacks in Frameworks */ = {isa = PBXBuildFile; productRef = 3770EEFB2AE3E6100079E36E /* FlowStacks */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -33,7 +32,6 @@
 				3766B4CD2DFB088E00AC6FA9 /* RevenueCatUI in Frameworks */,
 				3766B4CB2DFB088E00AC6FA9 /* RevenueCat in Frameworks */,
 				3766B4852DF96AA700AC6FA9 /* SharedSwiftUI in Frameworks */,
-				3770EEFC2AE3E6100079E36E /* FlowStacks in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -80,7 +78,6 @@
 			);
 			name = "Blur Face";
 			packageProductDependencies = (
-				3770EEFB2AE3E6100079E36E /* FlowStacks */,
 				3766B4812DF969C400AC6FA9 /* SharedFoundation */,
 				3766B4842DF96AA700AC6FA9 /* SharedSwiftUI */,
 				3766B4CA2DFB088E00AC6FA9 /* RevenueCat */,
@@ -122,7 +119,6 @@
 			);
 			mainGroup = 37ED6DDC2AE3E42B00D162EE;
 			packageReferences = (
-				3770EEFA2AE3E6100079E36E /* XCRemoteSwiftPackageReference "FlowStacks" */,
 				3766B4802DF969C400AC6FA9 /* XCRemoteSwiftPackageReference "SharedFoundation" */,
 				3766B4832DF96AA700AC6FA9 /* XCRemoteSwiftPackageReference "SharedSwiftUI" */,
 				3766B4C72DFB088E00AC6FA9 /* XCRemoteSwiftPackageReference "purchases-ios-spm" */,
@@ -396,14 +392,6 @@
 				version = 5.28.1;
 			};
 		};
-		3770EEFA2AE3E6100079E36E /* XCRemoteSwiftPackageReference "FlowStacks" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/johnpatrickmorgan/FlowStacks.git";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 0.3.4;
-			};
-		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -426,11 +414,6 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 3766B4C72DFB088E00AC6FA9 /* XCRemoteSwiftPackageReference "purchases-ios-spm" */;
 			productName = RevenueCatUI;
-		};
-		3770EEFB2AE3E6100079E36E /* FlowStacks */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 3770EEFA2AE3E6100079E36E /* XCRemoteSwiftPackageReference "FlowStacks" */;
-			productName = FlowStacks;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

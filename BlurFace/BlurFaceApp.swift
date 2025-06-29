@@ -31,12 +31,12 @@ struct BlurFaceApp: App {
                 return shouldShow
             },
             set: {
-                subscriptionViewModel.shouldShowPaywall = $0 
+                subscriptionViewModel.shouldShowPaywall = $0
             }
         )
 
         WindowGroup {
-            AppCoordinator(storeManager: storeManager)
+            EditorView(viewModel: .init())
                 .fullScreenCover(isPresented: $shouldShowOnboarding) {
                     OnboardingView() {
                         shouldShowOnboarding = false
